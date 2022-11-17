@@ -1,3 +1,6 @@
+{% extends '_base.html' %}
+
+{% load crispy_forms_tags %}
 
 {% block page_tilte %}
 login
@@ -7,7 +10,7 @@ login
 {% block content %}
 <form action="" method="post">
   {% csrf_token %}
-  {{ form.as_p }}
+  {{ form|crispy }}
   <input type="submit" value="Login">
 </form>
 {% endblock %}
