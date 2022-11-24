@@ -1,0 +1,23 @@
+{% extends '_base.html' %}
+
+{% block page_tilte %} فهرست محصولات {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Product List</h1>
+
+                {% for product in products %}
+                <div class="mb-2 p-5 border">
+                    <div class="mt-3">{{ product.title }}</div>
+                    <div class="mt-3">{{ product.price }}</div>
+                    <div class="mt-3">{{ product.description }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
