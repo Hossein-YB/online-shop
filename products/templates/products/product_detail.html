@@ -1,0 +1,18 @@
+{% extends '_base.html' %}
+
+{% block page_tilte %}
+product detail
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="mt-2">{{ product.title }}</div>
+                <div class="mt-2">{{ product.description }}</div>
+                <div class="mt-2">{{ product.price }}</div>
+                <div class="mt-2">{{ product.active }}</div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
