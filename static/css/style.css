@@ -1,4 +1,23 @@
 @import '_top_nav.css';
+
+/* change font site */
+@font-face {
+	font-family: IRANSansX;
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/woff/IRANSansX-Regular.woff') format('woff'),
+	url('../fonts/woff2/IRANSansX-Regular.woff2') format('woff2');
+}
+.ss02 {
+    -moz-font-feature-settings: "ss02";
+    -webkit-font-feature-settings: "ss02";
+    font-feature-settings: "ss02";
+}
+
+body {
+    font-family: "IRANSansX", serif;
+    text-align:right !important;
+}
 p {
     margin: 0px;
 }
