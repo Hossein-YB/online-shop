@@ -1,0 +1,40 @@
+
+footer{
+    border-top: #2c2c2c solid 1px;
+}
+@media screen and (max-width: 770px) {
+    .news-latter div.offer-news,
+    .news-latter div.join-news,
+    .news-latter div.email-news {
+        padding: 1rem 1rem;
+        border-bottom: 0.5px solid rgb(40, 40, 40);
+        margin-bottom: 1rem;
+    }
+}
+
+.main-section-footer h5 {
+    font-size: 15px;
+    border-bottom: 3px solid #a09f9f;
+    padding-bottom: 10px;
+    display: inline-flex;
+}
+
+.footer-nav-custome li a {
+    font-size: 14px;
+    padding-right: 0px !important;
+    color: #4e4d4d;
+    transition: 0.5s ease;
+}
+
+.footer-nav-custome li a:hover {
+    color: #a09f9f;
+}
+
+.support-rules {
+    font-size: 39px;
+    color: rgb(18, 93, 143);
+}
+
+.suport-number p {
+    font-size: 14px;
+}
