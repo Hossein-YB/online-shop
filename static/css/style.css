@@ -1,6 +1,6 @@
 @import '_top_nav.css';
 @import '_footer.css';
-
+@import '_products.css';
 /* change font site */
 @font-face {
 	font-family: IRANSansX;
@@ -16,7 +16,7 @@
 }
 
 body {
-    font-family: "IRANSansX", serif;
+    font-family: "IRANSansX", sans-serif;
     text-align:right !important;
 }
 p {

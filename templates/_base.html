@@ -6,15 +6,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>{% block page_tilte %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap-rtl.css' %}">
     {#    <link rel="stylesheet" href="assets/css/font-awesome.css">#}
     {#    <link rel="stylesheet" href="assets/css/owl.carousel.css">#}
     <script src="https://kit.fontawesome.com/9d274832ee.js" crossorigin="anonymous"></script>
     {#    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">#}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
-    <title>{% block page_title %}{% endblock %}</title>
 </head>
 <body class="rtl">
 <!-- start top nav -->
@@ -411,6 +409,11 @@
 
 </footer>
 <!-- end footer -->
+<!-- jQuery JS -->
+<script src="{% static 'js/vendor.js' %}"></script>
+
+<!-- Main JS -->
+<script src="{% static 'js/main.js' %}"></script>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
