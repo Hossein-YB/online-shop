@@ -1,0 +1,10 @@
+ol.custom-breadcrumb {
+    margin: 0px 0px;
+    background-color: transparent;
+    font-size: 15px;
+}
+
+
+.custom-breadcrumb-item+.custom-breadcrumb-item::before {
+    content: "<";
+}

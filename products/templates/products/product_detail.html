@@ -1,18 +1,297 @@
 {% extends '_base.html' %}
-
+{% load static %}
 {% block page_tilte %}
-product detail
+    محصوله {{ product.title }}
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <!-- start breadcrumb -->
+    <div class="container mt-2">
         <div class="row">
-            <div class="col-sm-12">
-                <div class="mt-2">{{ product.title }}</div>
-                <div class="mt-2">{{ product.description }}</div>
-                <div class="mt-2">{{ product.price }}</div>
-                <div class="mt-2">{{ product.active }}</div>
+            <div class="col-sm-12 w-100 ">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb custom-breadcrumb">
+                        <li class="breadcrumb-item custom-breadcrumb-item"><a href="#">خانه</a></li>
+                        <li class="breadcrumb-item custom-breadcrumb-item"><a href="#">گوشی موبایل</a></li>
+                        <li class="breadcrumb-item custom-breadcrumb-item active"
+                            aria-current="page">{{ product.title }}</li>
+                    </ol>
+                </nav>
             </div>
         </div>
     </div>
+    <!-- end breadcrumb -->
+    <!-- start product info -->
+    <div class="container my-3">
+        <div class="row">
+            <div class="col-sm-12 col-md-5">
+                <img src="assets/img/mo1.jpg" class="w-100 h-100" alt="">
+            </div>
+            <div class="col-sm-12 col-md-7 border-right">
+                <h6 class="">{{ product.title }}</h6>
+                <div class="border-bottom">
+                    <div class="continer">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="f-info mt-2">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <i class="fa-solid fa-thumbs-up text-success"></i>
+                                            <p class="d-inline">۸۲% نفر از خریداران، این کالا را پیشنهاد کرده اند</p>
+                                        </div>
+                                        <div class="icons-top">
+                                            <i class="fa fa-heart-o text-danger"></i>
+                                            <i class="fa fa-share text-success"></i>
+                                            <i class="fa fa-bell-o text-warning"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="product-star">
+                                            <i class="fa fa-star-half color-gold" aria-hidden="true "></i>
+                                            <i class="fa fa-star color-gold" aria-hidden="true "></i>
+                                            <i class="fa fa-star color-gold" aria-hidden="true "></i>
+                                            <i class="fa fa-star color-gold" aria-hidden="true "></i>
+                                            <i class="fa fa-star color-gold" aria-hidden="true "></i>
+                                            <span>4.2</span>
+                                        </p>
+                                    </div>
+
+                                </div>
+                                <ul class="py-5 information">
+                                    <div class="pt-6">
+                                        <h6>ویژگی ها</h6>
+                                    </div>
+                                    <li class="item-info">
+                                        <div>
+                                            <i class="fa fa-circle font-w"></i>
+                                            <p class="q-info">
+                                                فناوری صفحه‌نمایش :
+                                            </p>
+                                            <p class="a-info">
+                                                IPS
+                                            </p>
+
+                                        </div>
+                                    </li>
+                                    <li class="item-info">
+                                        <div>
+                                            <i class="fa fa-circle font-w"></i>
+                                            <p class="q-info">
+                                                اندازه :
+                                            </p>
+                                            <p class="a-info">
+                                                6.78
+                                            </p>
+
+                                        </div>
+                                    </li>
+                                    <li class="item-info">
+                                        <div>
+                                            <i class="fa fa-circle font-w"></i>
+                                            <p class="q-info">
+                                                رزولوشن عکس :
+                                            </p>
+                                            <p class="a-info">
+                                                108 مگاپیکسل
+                                            </p>
+
+                                        </div>
+                                    </li>
+                                    <li class="item-info">
+                                        <div>
+                                            <i class="fa fa-circle font-w"></i>
+                                            <p class="q-info">
+                                                نسخه سیستم عامل :
+                                            </p>
+                                            <p class="a-info">
+                                                Android 11
+                                            </p>
+
+                                        </div>
+                                    </li>
+                                    <li class="item-info">
+                                        <div>
+                                            <i class="fa fa-circle font-w"></i>
+                                            <p class="q-info">
+                                                اقلام همراه :
+                                            </p>
+                                            <p class="a-info">
+                                                دفترچه‌ راهنما، شارژر، قاب ژله‌ای، هندزفری
+                                            </p>
+
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-in-shop-card mt-4">
+                    <form class="" action="">
+                        <div class="form-group row mr-2 ">
+                            <label for="number-of-product"
+                                   class="c-col-sm-1 col-sm-1 col-form-label no-gutters">تعداد</label>
+                            <div class="c-col-sm-5 col-sm-5 no-gutters">
+                                <input type="number" class="form-control" name="" id="number-of-product">
+                            </div>
+                            <div class="c-col-sm-5 col-sm-5 no-gutters">
+                                <button type="submit" class="btn btn-success form-control">افزودن به سبدخرید</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="mt-5">
+                    <div class="product-categori">
+                        <p class="d-inline">دسته بندی ها: </p>
+                        <a class="ml-1 badge badge-primary badge-pill" href="#">لباس</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- start product info -->
+    <!-- end tabs -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="nav nav-tabs custome-product-nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="details-tab" data-toggle="tab" href="#details" role="tab"
+                           aria-controls="details" aria-selected="">ویژگی ها</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="desc-tab" data-toggle="tab" href="#desc" role="tab" aria-controls="desc"
+                           aria-selected="true">توضیحات محصول</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="comment-tab" data-toggle="tab" href="#comment" role="tab"
+                           aria-controls="comment" aria-selected="false">نظرات</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade custom-product-tab-pan show active" id="details" role="tabpanel"
+                         aria-labelledby="details-tab">
+                        <h4 class="p-3">مشخصات</h4>
+                        <ul class="nav flex-column">
+                            <li class="nav-item details-product">
+                                <div>
+                                    <p class="details-title"><i class="fas fa-caret-left"></i>مشخصات عمومی</p>
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item d-flex mb-3">
+                                            <div class="key d-flex align-items-center px-md-3 px-sm-1">
+                                                <p>وزن</p>
+                                            </div>
+                                            <div class="value px-md-3 d-flex align-items-center px-sm-1">
+                                                <p>200گرم
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item d-flex mb-3">
+                                            <div class="key d-flex align-items-center px-md-3 px-sm-1">
+                                                <p>سایز</p>
+                                            </div>
+                                            <div class="value px-md-3 d-flex align-items-center px-sm-1">
+                                                <p>xxl xl x
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item d-flex mb-3">
+                                            <div class="key d-flex align-items-center px-md-3 px-sm-1">
+                                                <p>نوع</p>
+                                            </div>
+                                            <div class="value px-md-3 d-flex align-items-center px-sm-1">
+                                                <p>چرم گاومیش
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade custom-product-tab-pan" id="desc" role="tabpanel"
+                         aria-labelledby="desc-tab">
+                        <h4 class="p-3">
+                            توضیحات درباره {{ product.title }}
+                        </h4>
+                        <p class="product-desc px-3 pb-3 pt-1 m-3">
+                            {{ product.description }}
+                        </p>
+                    </div>
+                    <div class="tab-pane fade custom-product-tab-pan" id="comment" role="tabpanel"
+                         aria-labelledby="comment-tab">
+                        <div class="container my-md-4 px-4">
+                            <div class="row">
+                                <div class="col-sm-12 d-flex justify-content-around comment-rule p-5 m-3">
+                                    <div class="comment-title">
+                                        <p class="mb-4">شما هم میتوانید درباره این کالا نظر دهید.</p>
+                                        <p>برای ثبت نظر لازم است که اول در سایت ثبت نام کنید یا اگر حسابی دارید وارد
+                                            حساب کاربری خود شوید.</p>
+                                        <a href="#login-modal" class="btn btn-success mt-4 p-1"><i
+                                                class="fas fa-sign-in-alt mr-1"></i>ورود به حساب کاربری</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row my-4 border-bottom">
+                                <div class="col-sm-12">
+                                    <div class="comment">
+                                        <div class="d-flex flex-row">
+                                            <img src="{%  static 'img/comment-1.jpg'  %}" alt="Review Avatar"
+                                                 class="customer-img">
+                                            <div>
+                                                <div class="review__meta">
+                                                    <strong class="review__author px-4">علی علوی</strong>
+                                                    <span class="review__dash">-</span>
+                                                    <span class="review__published-date">۱۲ مرداد ۱۴۰۱</span>
+                                                </div>
+                                                <div class="product-rating">
+                                                    <div class="m-0 star-rating star-five">
+                                                        <span>Rated <strong class="rating">5.00</strong> out of 5</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="review__description text-right px-4">
+                                            از خرید خودم راضی هستم. واقعا خیلی خوب بسته بندی شده بود و همینطور سر زمان
+                                            رسید. واقعا نسبت به قیمت خیلی می ارزه.
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="container add-comment">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="px-5">
+                                        <p class="add-comment-title my-3 bg-success p-2 text-white rounded"><i
+                                                class="fas fa-comments mr-3"></i>دیدگاه خود را ارسال کنید</p>
+
+                                    </div>
+                                    <form class="my-5 px-5 form-row">
+                                        <div class="form-group col-sm-12">
+                                            <label for="inputEmail4">نام و نام خانوادگی</label>
+                                            <input type="text" class="form-control" placeholder=" حسین یعقوبی">
+                                        </div>
+                                        <div class="form-group col-sm-12">
+                                            <textarea class="form-control" name="" id="" cols="30" rows="5"
+                                                      placeholder="دیدگاه شما ..."></textarea>
+                                        </div>
+                                        <div class="form-group col-sm-12">
+                                            <button type="submit" class="btn btn-primary form-control">ثبت نظر</button>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end tabs -->
+
 {% endblock %}

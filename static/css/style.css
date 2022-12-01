@@ -1,6 +1,11 @@
 @import '_top_nav.css';
 @import '_footer.css';
 @import '_products.css';
+@import '_product-breadcrum.css';
+@import '_product_info.css';
+@import '_product_tab.css';
+
+
 /* change font site */
 @font-face {
 	font-family: IRANSansX;
