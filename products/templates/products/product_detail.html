@@ -1,5 +1,6 @@
 {% extends '_base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block page_tilte %}
     محصوله {{ product.title }}
 {% endblock %}
@@ -54,6 +55,7 @@
                                             <i class="fa fa-star color-gold" aria-hidden="true "></i>
                                             <span>4.2</span>
                                         </p>
+                                        <span class="product-price py-2 mx-1 text-success">{{ product.price }} تومان </span>
                                     </div>
 
                                 </div>
@@ -167,7 +169,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="comment-tab" data-toggle="tab" href="#comment" role="tab"
-                           aria-controls="comment" aria-selected="false">نظرات</a>
+                           aria-controls="comment" aria-selected="false">نظرات <span class="badge badge-success">{{ product.comments.count }}</span></a>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
@@ -224,7 +226,7 @@
                          aria-labelledby="comment-tab">
                         <div class="container my-md-4 px-4">
                             <div class="row">
-                                <div class="col-sm-12 d-flex justify-content-around comment-rule p-5 m-3">
+                                <div class="col-sm-12 d-flex justify-content-around comment-rule p-3">
                                     <div class="comment-title">
                                         <p class="mb-4">شما هم میتوانید درباره این کالا نظر دهید.</p>
                                         <p>برای ثبت نظر لازم است که اول در سایت ثبت نام کنید یا اگر حسابی دارید وارد
@@ -234,30 +236,31 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row my-4 border-bottom">
+                            <div class="row my-4">
                                 <div class="col-sm-12">
-                                    <div class="comment">
+                                    {% for comment in product.comments.all %}
+                                        <div class="comment border-bottom mb-1">
                                         <div class="d-flex flex-row">
                                             <img src="{%  static 'img/comment-1.jpg'  %}" alt="Review Avatar"
                                                  class="customer-img">
                                             <div>
                                                 <div class="review__meta">
-                                                    <strong class="review__author px-4">علی علوی</strong>
+                                                    <strong class="review__author">{{ comment.user.username }}</strong>
                                                     <span class="review__dash">-</span>
-                                                    <span class="review__published-date">۱۲ مرداد ۱۴۰۱</span>
+                                                    <span class="review__published-date">{{comment.datetim_created}}</span>
                                                 </div>
-                                                <div class="product-rating">
-                                                    <div class="m-0 star-rating star-five">
-                                                        <span>Rated <strong class="rating">5.00</strong> out of 5</span>
+                                                <div class="product-rating m-1">
+                                                    <div class="star-rating star-five">
+                                                        <span>Rated <strong class="rating">{{ comment.star }}</strong> out of 5</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <p class="review__description text-right px-4">
-                                            از خرید خودم راضی هستم. واقعا خیلی خوب بسته بندی شده بود و همینطور سر زمان
-                                            رسید. واقعا نسبت به قیمت خیلی می ارزه.
+                                        <p class="review__description">
+                                            {{ comment.body }}
                                         </p>
                                     </div>
+                                    {% endfor %}
                                 </div>
 
                             </div>
@@ -270,15 +273,9 @@
                                                 class="fas fa-comments mr-3"></i>دیدگاه خود را ارسال کنید</p>
 
                                     </div>
-                                    <form class="my-5 px-5 form-row">
-                                        <div class="form-group col-sm-12">
-                                            <label for="inputEmail4">نام و نام خانوادگی</label>
-                                            <input type="text" class="form-control" placeholder=" حسین یعقوبی">
-                                        </div>
-                                        <div class="form-group col-sm-12">
-                                            <textarea class="form-control" name="" id="" cols="30" rows="5"
-                                                      placeholder="دیدگاه شما ..."></textarea>
-                                        </div>
+                                    <form action="{% url 'comment_create' product.id %}" method="post" class="my-5 px-5 form-column">
+                                        {% csrf_token %}
+                                        {{ comment_form|crispy }}
                                         <div class="form-group col-sm-12">
                                             <button type="submit" class="btn btn-primary form-control">ثبت نظر</button>
 
