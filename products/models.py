@@ -30,8 +30,8 @@ class Comments(models.Model):
 
     product = models.ForeignKey(Products, on_delete=models.CASCADE, related_name='comments', )
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='comments', )
-    body = models.TextField()
-    star = models.CharField(max_length=10, choices=PRODUCT_STARS)
+    body = models.TextField(verbose_name="comment message")
+    star = models.CharField(max_length=10, choices=PRODUCT_STARS, verbose_name="whats your score")
     active = models.BooleanField(default=True)
 
     datetime_created = models.DateTimeField(auto_now_add=True)
