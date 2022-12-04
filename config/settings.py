@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os.path
 from pathlib import Path
 from environs import Env
+from django.contrib.messages import constants as messages_constants
 
 env = Env()
 env.read_env()
@@ -180,3 +181,9 @@ LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# for messages
+MESSAGES_TAGS = {
+    messages_constants.ERROR: 'danger',
+}
+

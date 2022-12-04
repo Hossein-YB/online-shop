@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-03 23:22+0330\n"
+"POT-Creation-Date: 2022-12-04 15:42+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,33 +45,37 @@ msgstr "متن دیدگاه"
 msgid "whats your score"
 msgstr "امتیاز شما به این محصول"
 
-#: .\templates\products\product_detail.html:61
+#: .\templates\products\product_detail.html:68
 msgid "$"
 msgstr "تومان"
 
-#: .\templates\products\product_detail.html:139
+#: .\templates\products\product_detail.html:146
 msgid "number"
 msgstr "تعداد"
 
-#: .\templates\products\product_detail.html:144
+#: .\templates\products\product_detail.html:152
 msgid "add to shop card"
 msgstr "اضافه کردن به سبد خرید"
 
-#: .\templates\products\product_detail.html:151
+#: .\templates\products\product_detail.html:159
 msgid "Category"
 msgstr "دسته بندی"
 
-#: .\templates\products\product_detail.html:167
+#: .\templates\products\product_detail.html:175
 msgid "Property"
 msgstr "ویژگی ها"
 
-#: .\templates\products\product_detail.html:171
+#: .\templates\products\product_detail.html:179
 msgid "Description"
 msgstr "توضیحات"
 
-#: .\templates\products\product_detail.html:175
+#: .\templates\products\product_detail.html:183
 msgid "Comments"
 msgstr "نظرات"
+
+#: .\views.py:39
+msgid "Your comment was successfully registered"
+msgstr "نظر شما با موفقیت ثبت شد"
 
 #~ msgid "Product description"
 #~ msgstr "توضیحات محصول"

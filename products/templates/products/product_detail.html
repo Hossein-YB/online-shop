@@ -9,6 +9,20 @@
 {% endblock %}
 
 {% block content %}
+    <div class="container my-2">
+        <div class="row">
+            {% if messages %}
+                <div class="col-sm-12 brd-b">
+                    <div>
+                        {% for message in messages %}
+                            <div {% if message.tags %}
+                                class="alert alert-{{ message.tags }}"{% endif %}> {{ message }} </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
     <!-- start breadcrumb -->
     <div class="container mt-2">
         <div class="row">
@@ -243,26 +257,26 @@
                                 <div class="col-sm-12">
                                     {% for comment in product.comments.all|comment_tags %}
                                         <div class="comment border-bottom mb-1">
-                                        <div class="d-flex flex-row">
-                                            <img src="{%  static 'img/comment-1.jpg'  %}" alt="Review Avatar"
-                                                 class="customer-img">
-                                            <div>
-                                                <div class="review__meta">
-                                                    <strong class="review__author">{{ comment.user.username }}</strong>
-                                                    <span class="review__dash">-</span>
-                                                    <span class="review__published-date">{{comment.datetim_created}}</span>
-                                                </div>
-                                                <div class="product-rating m-1">
-                                                    <div class="star-rating star-five">
-                                                        <span>Rated <strong class="rating">{{ comment.star }}</strong> out of 5</span>
+                                            <div class="d-flex flex-row">
+                                                <img src="{% static 'img/comment-1.jpg' %}" alt="Review Avatar"
+                                                     class="customer-img">
+                                                <div>
+                                                    <div class="review__meta">
+                                                        <strong class="review__author">{{ comment.user.username }}</strong>
+                                                        <span class="review__dash">-</span>
+                                                        <span class="review__published-date">{{ comment.datetim_created }}</span>
+                                                    </div>
+                                                    <div class="product-rating m-1">
+                                                        <div class="star-rating star-five">
+                                                            <span>Rated <strong class="rating">{{ comment.star }}</strong> out of 5</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <p class="review__description">
+                                                {{ comment.body }}
+                                            </p>
                                         </div>
-                                        <p class="review__description">
-                                            {{ comment.body }}
-                                        </p>
-                                    </div>
                                     {% endfor %}
                                 </div>
 
@@ -279,8 +293,9 @@
                                     <form action="{% url 'comment_create' product.id %}" method="post" class="my-5 px-5 form-column">
                                         {% csrf_token %}
                                         {{ comment_form|crispy }}
-                                        <div class="form-group col-sm-12">
-                                            <button type="submit" class="btn btn-primary px-0 form-control">ثبت نظر</button>
+                                        <div class="form-group col-sm-12 px-6">
+                                            <button type="submit" class="btn btn-primary form-control">ثبت نظر
+                                            </button>
 
                                         </div>
                                     </form>

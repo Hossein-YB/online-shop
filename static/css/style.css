@@ -57,11 +57,11 @@ p {
 }
 
 .brd-b {
-    border-bottom: 1rem solid black;
+    border-bottom: 0.1rem solid #011a01;
 }
-.px-0{
-    padding-left: 0px !important;
-    padding-right: 0px !important;
+.px-6{
+    padding-right: 47px !important;
+    padding-left: 47px !important;
 }
 ul {
     list-style-type: none;
