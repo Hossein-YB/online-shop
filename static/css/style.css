@@ -57,9 +57,12 @@ p {
 }
 
 .brd-b {
-    border-bottom: 1rem solid balck;
+    border-bottom: 1rem solid black;
 }
-
+.px-0{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
 ul {
     list-style-type: none;
 }
@@ -120,7 +123,7 @@ ul {
     }
 }
 
-@media (max-width: 991) {
+@media (max-width: 991px) {
     .cu-mt-lg-3 {
         margin-top: 1rem !important;
     }

@@ -2,8 +2,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% load comment_tags %}
-{#{% load count_comment_tags %}#}
-{#{% load comment_tags_count %}#}
+{% load i18n %}
 
 {% block page_tilte %}
     محصوله {{ product.title }}
@@ -59,7 +58,7 @@
                                             <i class="fa fa-star color-gold" aria-hidden="true "></i>
                                             <span>4.2</span>
                                         </p>
-                                        <span class="product-price py-2 mx-1 text-success">{{ product.price }} تومان </span>
+                                        <span class="product-price py-2 mx-1 text-success">{{ product.price }}{% trans '$' %} </span>
                                     </div>
 
                                 </div>
@@ -137,19 +136,19 @@
                     <form class="" action="">
                         <div class="form-group row mr-2 ">
                             <label for="number-of-product"
-                                   class="c-col-sm-1 col-sm-1 col-form-label no-gutters">تعداد</label>
+                                   class="c-col-sm-1 col-sm-1 col-form-label no-gutters">{% trans 'number' %}</label>
                             <div class="c-col-sm-5 col-sm-5 no-gutters">
-                                <input type="number" class="form-control" name="" id="number-of-product">
+                                <input type="number" class="form-control" value="1" name="" id="number-of-product">
                             </div>
                             <div class="c-col-sm-5 col-sm-5 no-gutters">
-                                <button type="submit" class="btn btn-success form-control">افزودن به سبدخرید</button>
+                                <button type="submit" class="btn btn-success form-control">{% trans 'add to shop card' %}</button>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="mt-5">
                     <div class="product-categori">
-                        <p class="d-inline">دسته بندی ها: </p>
+                        <p class="d-inline">{% trans 'Category' %}</p>
                         <a class="ml-1 badge badge-primary badge-pill" href="#">لباس</a>
                     </div>
                 </div>
@@ -165,15 +164,15 @@
                 <ul class="nav nav-tabs custome-product-nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="details-tab" data-toggle="tab" href="#details" role="tab"
-                           aria-controls="details" aria-selected="">ویژگی ها</a>
+                           aria-controls="details" aria-selected="">{% trans 'Property' %}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="desc-tab" data-toggle="tab" href="#desc" role="tab" aria-controls="desc"
-                           aria-selected="true">توضیحات محصول</a>
+                           aria-selected="true">{% trans 'Description' %}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="comment-tab" data-toggle="tab" href="#comment" role="tab"
-                           aria-controls="comment" aria-selected="false">نظرات <span class="badge badge-success">{{ product.comments.all|count_comment_tags }}</span></a>
+                           aria-controls="comment" aria-selected="false">{% trans 'Comments' %}<span class="badge badge-success">{{ product.comments.all|count_comment_tags }}</span></a>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
@@ -281,7 +280,7 @@
                                         {% csrf_token %}
                                         {{ comment_form|crispy }}
                                         <div class="form-group col-sm-12">
-                                            <button type="submit" class="btn btn-primary form-control">ثبت نظر</button>
+                                            <button type="submit" class="btn btn-primary px-0 form-control">ثبت نظر</button>
 
                                         </div>
                                     </form>
