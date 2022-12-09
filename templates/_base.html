@@ -63,7 +63,7 @@
                     <div class="dropdown">
                         <button class="btn btn-link dropdown-toggle custom-dropdown-toggle text-decoration-none text-white border-0 shop-card"
                                 type="button" id="dropdownMenuButton" data-toggle="dropdown">
-                            <span class="mr-2">سبد خرید</span> <i class="fa  fa-cart-plus"></i>
+                            <a href="{% url 'cart:cart_detail' %}" class="mr-2">سبد خرید</a> <i class="fa  fa-cart-plus"></i>
                         </button>
                         <div class="dropdown-menu basket">
                             <a class="dropdown-item p-1 d-flex justify-content-around" href="#">
@@ -110,7 +110,7 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav custom-navbar-nav mr-auto">
                                 <li class="nav-item active">
-                                    <a class="nav-link text-white" href="#">خانه</a>
+                                    <a class="nav-link text-white" href="{% url 'product_list' %}">خانه</a>
                                 </li>
                                 <li class="nav-item custom-nav-item dropdown">
                                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown"
@@ -319,7 +319,7 @@
                                 <a class="nav-link" href="#">حساب کاربری</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">سبد خرید</a>
+                                <a class="nav-link" href="{% url 'cart:cart_detail' %}">سبد خرید</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">علاقه مندی ها</a>

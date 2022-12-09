@@ -1,0 +1,140 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block page_tilte %}
+    سبد خرید
+{% endblock %}
+
+{% block content %}
+  <!-- Main Wrapper Start -->
+    <div class="container-fluid bg-light">
+        <div class="row">
+            <div class="col-sm-12 text-center w-100 title-shop-cart">
+                <h3>سبد خرید</h3>
+            </div>
+        </div>
+
+        <div class="row bg-white p-1 pt-5">
+            <div class="col-sm-12 mt-5 mb-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-8 d-flex flex-column">
+                            <form class="cart-form" action="#">
+                                <div class="row no-gutters">
+                                    <div class="col-sm-12">
+                                        <div class="">
+                                            <table class="table table-responsive">
+                                                <thead>
+                                                    <tr>
+                                                        <th>&nbsp;</th>
+                                                        <th>عکس محصول</th>
+                                                        <th class="text-right">نام محصول</th>
+                                                        <th>قیمت</th>
+                                                        <th>مقدار</th>
+                                                        <th>مجموع</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="">
+                                                {% for item in cart %}
+                                                    <tr class="tr-border">
+                                                        <td class="product-remove text-right"><a href=""><i
+                                                            class="flaticon flaticon-cross"></i></a>
+                                                        </td>
+                                                        <td class="product-thumbnail text-right">
+                                                            <img src="assets/img/prod-10-70x88.jpg" alt="Product Thumnail w-100">
+                                                        </td>
+                                                        <td class="product-name wide-column">
+                                                            <h3>
+                                                                <a href="#">{{ item.product_object.title }}</a>
+                                                            </h3>
+                                                        </td>
+                                                        <td class="product-price">
+                                                            <span class="product-price-wrapper">
+                                                    <span class="money">۱۴۸,۰۰۰ تومان</span>
+                                                            </span>
+                                                        </td>
+                                                        <td class="product-quantity">
+                                                            <div class="quantity">
+                                                                <input type="number" class="quantity-input" name="qty" id="qty-1" value="2" min="1">
+                                                            </div>
+                                                        </td>
+                                                        <td class="product-total-price">
+                                                            <span class="product-price-wrapper">
+                                                    <span class="money">۲۹۶,۰۰۰ تومان</span>
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-block pt-2 mt-3">
+                                    <div class="col-sm-6 text-left">
+                                        <button type="submit" class="btn bg-danger text-white">خالی کردن سبد
+                                            خرید
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- cart for pay -->
+                        <div class="col-sm-12 col-md-4">
+                            <div class="cart-collaterals">
+                                <div class="cart-totals">
+                                    <h5 class="mb-4 text-center">مجموع</h5>
+                                    <div class="cart-calculator">
+                                        <div class="d-flex flex-wrap">
+                                            <div class="cart-calculator-item-head">
+                                                <span> مجموع قیمت کالا ها: </span>
+                                            </div>
+                                            <div class="cart-calculator-item-value">
+                                                <span>۳۴۶,۰۰۰ تومان</span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-wrap">
+                                            <div class="cart-calculator-item-head">
+                                                <span>هزینه ارسال</span>
+                                            </div>
+                                            <div class="cart-calculator-item-value">
+                                                <span>۳۴۶,۰۰۰ تومان</span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-wrap total-price">
+                                            <div class="cart-calculator-item-head">
+                                                <span>جمع کل</span>
+                                            </div>
+                                            <div class="cart-calculator-item-value">
+                                                <span class="product-price-wrapper">
+                                                <span class="money">۳۴۶,۰۰۰ تومان</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <a href="#" class="btn-submit text-decoration-none">
+                                        ثبت سفارش
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-empty">
+            <div class="col-sm-12">
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+    <!-- Main Wrapper End -->
+{% endblock %}
