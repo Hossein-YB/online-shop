@@ -9,20 +9,6 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container my-2">
-        <div class="row">
-            {% if messages %}
-                <div class="col-sm-12 brd-b">
-                    <div>
-                        {% for message in messages %}
-                            <div {% if message.tags %}
-                                class="alert alert-{{ message.tags }}"{% endif %}> {{ message }} </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            {% endif %}
-        </div>
-    </div>
     <!-- start breadcrumb -->
     <div class="container mt-2">
         <div class="row">

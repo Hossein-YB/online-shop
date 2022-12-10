@@ -39,7 +39,8 @@
                                                 <tbody class="">
                                                 {% for item in cart %}
                                                     <tr class="tr-border">
-                                                        <td class="product-remove text-right"><a href=""><i
+                                                        <td class="product-remove text-right"><a
+                                                                href="{% url 'cart:remove_from_cart' item.product_obj.id %}"><i
                                                             class="flaticon flaticon-cross"></i></a>
                                                         </td>
                                                         <td class="product-thumbnail text-right">
@@ -75,9 +76,9 @@
                                 </div>
                                 <div class="d-block pt-2 mt-3">
                                     <div class="col-sm-6 text-left">
-                                        <button type="submit" class="btn bg-danger text-white">خالی کردن سبد
+                                        <a href="{% url 'cart:clear_cart' %}" class="btn bg-danger text-white">خالی کردن سبد
                                             خرید
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </form>
