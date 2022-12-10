@@ -9,6 +9,11 @@ from products.models import Products
 
 def cart_detail_view(request):
     cart = Cart(request)
+    for item in cart:
+        item['product_update_quantity_form'] = AddToCart(initial={
+            'inplace': True,
+            'quantity': item['quantity']
+        })
     return render(request, 'cart/cart_detail.html', {'cart': cart})
 
 
@@ -21,7 +26,7 @@ def add_to_cart_view(request, product_id):
     if form.is_valid():
         cleandata = form.cleaned_data
         quantity = cleandata['quantity']
-        cart.add(product, quantity)
+        cart.add(product, quantity, replace_quantity=cleandata['inplace'])
 
     return redirect('cart:cart_detail')
 
