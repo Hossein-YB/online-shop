@@ -1,4 +1,6 @@
 from products.models import Products
+from django.contrib import messages
+from django.utils.translation import gettext as _
 
 
 class Cart:
@@ -30,6 +32,7 @@ class Cart:
         else:
             self.cart[product_id]['quantity'] += quantity
 
+        messages.success(self.request, _('The product has been added to your cart'))
         self.save()
 
     def remove(self, product):
@@ -37,10 +40,11 @@ class Cart:
         Remove a product from the cart
         """
         product_id = str(product.id)
-
         if product_id in self.cart:
             del self.cart[product_id]
             self.save()
+            messages.success(self.request, _('The product has been removed'))
+            return True
 
     def save(self):
         """
@@ -66,6 +70,7 @@ class Cart:
 
     def clear(self):
         del self.session['cart']
+        messages.success(self.request, _('Your Cart is clean'))
         self.save()
 
     def get_total_price(self):
