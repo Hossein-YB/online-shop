@@ -8,9 +8,15 @@ login
 
 
 {% block content %}
-<form action="" method="post">
-  {% csrf_token %}
-  {{ form|crispy }}
-  <input type="submit" value="Login">
-</form>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+            <form action="" method="post">
+              {% csrf_token %}
+              {{ form|crispy }}
+              <input type="submit" value="Login">
+            </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}

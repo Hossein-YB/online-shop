@@ -279,15 +279,28 @@
                                                 class="fas fa-comments mr-3"></i>دیدگاه خود را ارسال کنید</p>
 
                                     </div>
-                                    <form action="{% url 'comment_create' product.id %}" method="post" class="my-5 px-5 form-column">
-                                        {% csrf_token %}
-                                        {{ comment_form|crispy }}
-                                        <div class="form-group col-sm-12 px-6">
-                                            <button type="submit" class="btn btn-primary form-control">ثبت نظر
-                                            </button>
 
-                                        </div>
-                                    </form>
+                                        {% if user.is_authenticated %}
+                                            <form action="{% url 'comment_create' product.id %}" method="post" class="my-5 px-5 form-column">
+                                                {% csrf_token %}
+                                                {{ comment_form|crispy }}
+                                                <div class="form-group col-sm-12 px-6">
+                                                    <button type="submit" class="btn btn-primary form-control">{% translate 'Comment' %}
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        {% else %}
+                                            <form action="" method="post" class="my-5 px-5 form-column">
+                                                {% csrf_token %}
+                                                {{ comment_form|crispy }}
+                                                <div class="form-group col-sm-12 px-6">
+                                                    <div class="btn btn-primary form-control popup" onclick="myFunction()">{% translate 'Comment' %}
+                                                        <span class="popup-text" id="myPopup">{% translate 'To write comment please first Login' %}</span>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        {% endif %}
+
                                 </div>
                             </div>
                         </div>

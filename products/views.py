@@ -31,11 +31,13 @@ class CommentCreateView(generic.CreateView):
 
     def form_valid(self, form):
         obj = form.save(commit=False)
-        obj.user = self.request.user
-
-        product_id = int(self.kwargs['product_id'])
-        product = get_object_or_404(Products, id=product_id)
-        obj.product = product
-        messages.success(self.request, _('Your comment was successfully registered'))
-        return super().form_valid(form)
+        if self.request.user.is_authenticated:
+            obj.user = self.request.user
+            product_id = int(self.kwargs['product_id'])
+            product = get_object_or_404(Products, id=product_id)
+            obj.product = product
+            messages.success(self.request, _('Your comment was successfully registered'))
+            return super().form_valid(form)
+        else:
+            return reverse('account_login')
 

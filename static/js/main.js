@@ -1,3 +1,8 @@
+/* disable button login form */
+function myFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.add("show");
+}
 /* Product Quantity */
 $(".quantity").append('<div class="dec qtybutton">-</div><div class="inc qtybutton">+</div>');
 
