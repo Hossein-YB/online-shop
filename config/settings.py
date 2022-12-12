@@ -96,6 +96,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # Custom Context processors
+                'cart.context_processors.cart',
             ],
         },
     },
@@ -155,6 +157,9 @@ USE_L10N = True
 USE_TZ = True
 LOCALE_PATHS = (
     BASE_DIR.joinpath('/products/locale'),
+    BASE_DIR.joinpath('/pages/locale'),
+    BASE_DIR.joinpath('/cart/locale'),
+    BASE_DIR.joinpath('locale/'),
 )
 
 # Static files (CSS, JavaScript, Images)

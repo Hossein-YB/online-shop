@@ -59,6 +59,7 @@
                     <div>
                         <a class="btn btn-link toolbar-btn text-decoration-none text-white border-0 shop-card" type="button" href="#miniCart">
                             <span class="mr-2">سبد خرید</span> <span class="flaticon flaticon-shopping-cart"></span>
+                            <span class="badge badge-danger radius-5">{{ cart|length }}</span>
                         </a>
                     </div>
                 </div>
@@ -420,7 +421,7 @@
 <aside class="container mini-cart pl-5" id="miniCart">
     <div class="row mt-6 d-flex justify-content-end align-items-center">
         <div class="col-sm-6">
-            <h3 class="mini-cart-title ">سبد خرید</h3>
+            <h3 class="mini-cart-title ">{% translate 'cart' %}</h3>
         </div>
         <div class="col-sm-6 ">
             <a href="" class="btn-close text-left">
@@ -429,9 +430,10 @@
         </div>
     </div>
     <div class="row mt-3">
-        <div class="col-sm-12 pr-5">
+        <div class="col-sm-12  pr-5">
             <ul class="mini-cart-list text-center">
-                <li class="mini-cart-product d-flex justify-content-between px-4">
+                {% for item in cart %}
+                    <li class="mini-cart-product d-flex justify-content-between px-4">
                     <div class="mini-cart-product-image">
                         <a href="#">
                             <img src="assets/img/prod-1-100x100.jpg" alt="products">
@@ -439,91 +441,31 @@
                     </div>
                     <div class="mini-cart-product-content pt-2">
                         <span class="mini-cart-product-title d-flex flex-row justify-content-between">
-                            <a href="#"> محصول شماره یک </a>
+                            <a href="#"> {{ item.product_obj.title}}</a>
                         </span>
                         <span class="mini-cart-product-quantity">
-                            <span>۴۹,۰۰۰ تومان</span> &#215; <span>۱</span>
+                            <span> {{ item.product_obj.price}}</span> &#215; <span> {{ item.quantity }}</span>
                         </span>
                     </div>
                     <div class="remove">
-                        <a href="#">
+                        <a href="{% url 'cart:remove_from_cart' item.product_obj.id %}">
                             &#10060;
                         </a>
                     </div>
                 </li>
-                <li class="mini-cart-product d-flex justify-content-between px-4">
-                    <div class="mini-cart-product-image">
-                        <a href="#">
-                            <img src="assets/img/prod-1-100x100.jpg" alt="products">
-                        </a>
-                    </div>
-                    <div class="mini-cart-product-content pt-2">
-                        <span class="mini-cart-product-title d-flex flex-row justify-content-between">
-                            <a href="#"> محصول شماره دو </a>
-                        </span>
-                        <span class="mini-cart-product-quantity">
-                            <span>۴۹,۰۰۰ تومان</span> &#215; <span>۱</span>
-                        </span>
-                    </div>
-                    <div class="remove">
-                        <a href="#">
-                            &#10060;
-                        </a>
-                    </div>
-                </li>
-                <li class="mini-cart-product d-flex justify-content-between px-4">
-                    <div class="mini-cart-product-image">
-                        <a href="#">
-                            <img src="assets/img/prod-1-100x100.jpg" alt="products">
-                        </a>
-                    </div>
-                    <div class="mini-cart-product-content pt-2">
-                        <span class="mini-cart-product-title d-flex flex-row justify-content-between">
-                            <a href="#"> محصول شماره سه </a>
-                        </span>
-                        <span class="mini-cart-product-quantity">
-                            <span>۴۹,۰۰۰ تومان</span> &#215; <span>۱</span>
-                        </span>
-                    </div>
-                    <div class="remove">
-                        <a href="#">
-                            &#10060;
-                        </a>
-                    </div>
-                </li>
-                <li class="mini-cart-product d-flex justify-content-between px-4">
-                    <div class="mini-cart-product-image">
-                        <a href="#">
-                            <img src="assets/img/prod-1-100x100.jpg" alt="products">
-                        </a>
-                    </div>
-                    <div class="mini-cart-product-content pt-2">
-                        <span class="mini-cart-product-title d-flex flex-row justify-content-between">
-                            <a href="#"> محصول شماره چهار </a>
-                        </span>
-                        <span class="mini-cart-product-quantity">
-                            <span>۴۹,۰۰۰ تومان</span> &#215; <span>۱</span>
-                        </span>
-                    </div>
-                    <div class="remove">
-                        <a href="#">
-                            &#10060;
-                        </a>
-                    </div>
-                </li>
-
+                {% endfor %}
             </ul>
         </div>
     </div>
     <div class="row mt-3">
         <div class="col-sm-12">
             <div class="mini-cart-total px-5">
-                <span>جمع کل:</span>
-                <span class="ammount">۱۴۸,۰۰۰ تومان</span>
+                <span>{% translate "total" %}</span>
+                <span class="ammount">{{ cart.get_total_price }}</span>
             </div>
             <div class="d-flex flex-column justify-content-center pr-5">
-                <a href="cart_detail.html" class="btn btn-info mb-2 mt-2">مشاهده سبد خرید</a>
-                <a href="#" class="btn btn-success ">پرداخت</a>
+                <a href="{% url 'cart:cart_detail' %}" class="btn btn-info mb-2 mt-2">{% translate 'Show cart' %}</a>
+                <a href="#" class="btn btn-success ">{% translate 'Pay' %}</a>
             </div>
 
         </div>
