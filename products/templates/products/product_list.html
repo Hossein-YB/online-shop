@@ -46,17 +46,38 @@
                 </div>
                 <!-- start pagination -->
                 <div class="row">
-                    <nav class="pagination-wrap mt--35 mt-md--25 pb-5">
-                        <ul class="pagination">
-                            <li><a href="#" class="next page-number"><i class="fa fa-angle-double-right"></i></a>
-                            </li>
-                            <li><span class="current page-number">1</span></li>
-                            <li><a href="#" class="page-number">2</a></li>
-                            <li><a href="#" class="page-number">3</a></li>
-                            <li><a href="#" class="prev page-number"><i class="fa fa-angle-double-left"></i></a>
-                            </li>
-                        </ul>
-                    </nav>
+                    <div class="col-sm-12">
+                        <nav class="pagination-wrap mt-5 pb-5">
+                            <ul class="pagination">
+                                {% if page_obj.has_previous %}
+                                    <li><a href="?page={{ page_obj.previous_page_number }}" class="next page-number"><i class="fa fa-angle-double-right"></i></a>
+                                    </li>
+                                {% else %}
+                                    <li><span class="next page-number"><i class="fa fa-angle-double-right"></i></span>
+                                    </li>
+                                {% endif %}
+                                {% for page_number in page_obj.paginator.page_range %}
+                                    {% if page_number == page_obj.paginator.ELLIPSIS %}
+                                        {{page_number}}
+                                    {% else %}
+                                        <li>
+                                            <a href="?page={{ page_number }}"
+                                               class="page-number {% if page_number == page_obj.number %} current {% endif %}">
+                                                {{ page_number }}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if page_obj.has_next %}
+                                    <li><a href="?page={{ page_obj.next_page_number }}" class="prev page-number"><i class="fa fa-angle-double-left"></i></a>
+                                    </li>
+                                {% else %}
+                                    <li><span class="prev page-number"><i class="fa fa-angle-double-left"></i></span>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
                 <!-- end pagination -->
             </div>
