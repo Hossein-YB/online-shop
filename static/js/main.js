@@ -23,6 +23,29 @@ $(".qtybutton").on("click", function() {
 });
 
 /* close btn */
+$('.btn-close').on('click', function(e) {
+    e.preventDefault();
+    var $this = $(this);
+    $this.parents('.open').removeClass('open');
+    $($overlay).removeClass('overlay-open');
+});
+
+
+$('.toolbar-btn').on('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var $this = $(this);
+    var target = $this.attr('href');
+    var prevTarget = $('.toolbar-btn').attr('href');
+    var prevTarget = $this.parent().siblings().children('.toolbar-btn').attr('href');
+    $(target).toggleClass('open');
+    $(prevTarget).removeClass('open');
+    $($overlay).addClass('overlay-open');
+    if ($this.attr('class').match(/\b(menu-btn)\b/)) {
+        $this.toggleClass('open');
+        $($overlay).removeClass('overlay-open');
+    }
+});
 
 $('.btn-close').on('click', function(e) {
     e.preventDefault();
