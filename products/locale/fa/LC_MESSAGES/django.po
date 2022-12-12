@@ -8,14 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-04 15:42+0330\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2022-12-12 09:45+0330\n"
+"PO-Revision-Date: 2022-12-12 09:49+0330\n"
+"Last-Translator:   <hossein@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.9.8\n"
 
 #: .\models.py:25
 msgid "Very Bad"
@@ -45,33 +46,43 @@ msgstr "متن دیدگاه"
 msgid "whats your score"
 msgstr "امتیاز شما به این محصول"
 
-#: .\templates\products\product_detail.html:68
+#: .\templates\products\product_detail.html:61
 msgid "$"
 msgstr "تومان"
 
-#: .\templates\products\product_detail.html:146
+#: .\templates\products\product_detail.html:141
 msgid "number"
 msgstr "تعداد"
 
-#: .\templates\products\product_detail.html:152
+#: .\templates\products\product_detail.html:147
 msgid "add to shop card"
 msgstr "اضافه کردن به سبد خرید"
 
-#: .\templates\products\product_detail.html:159
+#: .\templates\products\product_detail.html:154
 msgid "Category"
 msgstr "دسته بندی"
 
-#: .\templates\products\product_detail.html:175
+#: .\templates\products\product_detail.html:170
 msgid "Property"
 msgstr "ویژگی ها"
 
-#: .\templates\products\product_detail.html:179
+#: .\templates\products\product_detail.html:174
 msgid "Description"
 msgstr "توضیحات"
 
-#: .\templates\products\product_detail.html:183
+#: .\templates\products\product_detail.html:178
 msgid "Comments"
 msgstr "نظرات"
+
+#: .\templates\products\product_detail.html:288
+#: .\templates\products\product_detail.html:297
+#| msgid "Comments"
+msgid "Comment"
+msgstr "نظر"
+
+#: .\templates\products\product_detail.html:298
+msgid "To write comment please first Login"
+msgstr "برای نوشتن نظر لطفا اول عضو شوید"
 
 #: .\views.py:39
 msgid "Your comment was successfully registered"
