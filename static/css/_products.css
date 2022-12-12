@@ -13,6 +13,10 @@
     box-shadow: 2px 2px 2px 2px #c8c5c5;
     z-index: 100;
 }
+.product-image-card{
+    max-width: 217px;
+    max-height: 250px;
+}
 .product-title{
     font-size: 14px;
     font-weight: 200;
