@@ -4,6 +4,7 @@
 {% load comment_tags %}
 {% load i18n %}
 {% load jalali_tags %}
+{% load convert_number %}
 
 {% block page_tilte %}
     محصوله {{ product.title }}
@@ -60,7 +61,7 @@
                                             <i class="fa fa-star color-gold" aria-hidden="true "></i>
                                             <span>4.2</span>
                                         </p>
-                                        <span class="product-price py-2 mx-1 text-success">{{ product.price }}{% trans '$' %} </span>
+                                        <span class="product-price py-2 mx-1 text-success">{{ product.price|english_to_persian }}{% trans '$' %} </span>
                                     </div>
 
                                 </div>
