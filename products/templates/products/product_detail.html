@@ -3,6 +3,7 @@
 {% load crispy_forms_tags %}
 {% load comment_tags %}
 {% load i18n %}
+{% load jalali_tags %}
 
 {% block page_tilte %}
     محصوله {{ product.title }}
@@ -253,7 +254,7 @@
                                                     <div class="review__meta">
                                                         <strong class="review__author">{{ comment.user.username }}</strong>
                                                         <span class="review__dash">-</span>
-                                                        <span class="review__published-date">{{ comment.datetim_created }}</span>
+                                                        <span class="review__published-date">{{ comment.datetime_created|to_jalali:'%y / %B / %d' }} </span>
                                                     </div>
                                                     <div class="product-rating m-1">
                                                         <div class="star-rating star-five">

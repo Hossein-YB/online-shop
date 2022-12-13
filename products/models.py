@@ -2,6 +2,7 @@ from django.db import models
 from django.shortcuts import reverse
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
 
 
 class Products(models.Model):
@@ -11,7 +12,7 @@ class Products(models.Model):
     active = models.BooleanField(default=True)
     image = models.ImageField(verbose_name=_("product Image"), upload_to='product/product_image/')
 
-    datetime_created = models.DateTimeField(auto_now_add=True)
+    datetime_created = models.DateTimeField(default=timezone.now())
     datetime_modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
@@ -36,7 +37,7 @@ class Comments(models.Model):
     star = models.CharField(max_length=10, choices=PRODUCT_STARS, verbose_name=_("whats your score"))
     active = models.BooleanField(default=True)
 
-    datetime_created = models.DateTimeField(auto_now_add=True)
+    datetime_created = models.DateTimeField(default=timezone.now())
     datetime_modified = models.DateTimeField(auto_now=True)
 
     def get_absolute_url(self):
