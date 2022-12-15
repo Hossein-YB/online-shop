@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'rosetta',
+    'ckeditor',
 ]
 
 # Django all auth
@@ -198,6 +199,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -223,4 +225,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MESSAGES_TAGS = {
     messages_constants.ERROR: 'danger',
 }
+
+# # for ckeitor
+# CKEDITOR_BASEPATH = "/staticfiles/ckeditor/ckeditor/"
+
 

@@ -228,7 +228,7 @@
                             توضیحات درباره {{ product.title }}
                         </h4>
                         <p class="product-desc px-3 pb-3 pt-1 m-3">
-                            {{ product.description }}
+                            {{ product.description|safe }}
                         </p>
                     </div>
                     <div class="tab-pane fade custom-product-tab-pan" id="comment" role="tabpanel"
