@@ -1,12 +1,13 @@
+<h6> For run this project </h6>
 
-1 first clone project and run
-'''docker-compose up --build '''
+1 first clone project and run </br>
+```docker-compose up --build ```
 
-2 after that run command 
-'''docker-compose exec web python manage.py migrate'''
+2 after that run command  </br>
+```docker-compose exec web python manage.py migrate```
 
-3 after run migrate run command
-'''docker-compose exec web python manage.py collectstatic'''
+3 after run migrate run command </br>
+```docker-compose exec web python manage.py collectstatic```
 
-4 and create superuser
-'''docker-compose exec web python manage.py createsuperuser'''
+4 and create superuser </br>
+```docker-compose exec web python manage.py createsuperuser```
