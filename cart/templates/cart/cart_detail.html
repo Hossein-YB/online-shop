@@ -2,6 +2,8 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% load i18n %}
+{% load convert_number %}
+{% load humanize %}
 
 {% block page_tilte %}
     سبد خرید
@@ -53,7 +55,7 @@
                                                     </td>
                                                     <td class="product-price">
                                                         <span class="product-price-wrapper">
-                                                <span class="money">{{ item.product_obj.price }}</span>
+                                                <span class="money">{{ item.product_obj.price|intcomma:False|english_to_persian }}</span>
                                                         </span>
                                                     </td>
                                                     <td class="product-quantity">
@@ -76,7 +78,7 @@
                                                     </td>
                                                     <td class="product-total-price">
                                                         <span class="product-price-wrapper">
-                                                <span class="money">{{ item.total_price }} {% trans '$' %}</span>
+                                                <span class="money">{{ item.total_price|intcomma:False|english_to_persian }} {% trans '$' %}</span>
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -106,7 +108,7 @@
                                             </div>
                                             <div class="cart-calculator-item-value">
                                                 <span class="product-price-wrapper">
-                                                <span class="money">{{ cart.get_total_price }} {% trans '$' %}</span>
+                                                <span class="money">{{ cart.get_total_price|intcomma:False|english_to_persian }} {% trans '$' %}</span>
                                                 </span>
                                             </div>
                                         </div>
