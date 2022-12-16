@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'pages',
     'products',
     'cart',
+    'orders',
 
     # installed app
     'crispy_forms',
@@ -225,8 +226,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MESSAGES_TAGS = {
     messages_constants.ERROR: 'danger',
 }
-
-# # for ckeitor
-# CKEDITOR_BASEPATH = "/staticfiles/ckeditor/ckeditor/"
 
 

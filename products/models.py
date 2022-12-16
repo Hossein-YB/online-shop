@@ -13,7 +13,7 @@ class Products(models.Model):
     active = models.BooleanField(default=True)
     image = models.ImageField(verbose_name=_("product Image"), upload_to='product/product_image/')
 
-    datetime_created = models.DateTimeField(default=timezone.now())
+    datetime_created = models.DateTimeField(default='django.utils.timezone.now')
     datetime_modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
@@ -38,7 +38,7 @@ class Comments(models.Model):
     star = models.CharField(max_length=10, choices=PRODUCT_STARS, verbose_name=_("whats your score"))
     active = models.BooleanField(default=True)
 
-    datetime_created = models.DateTimeField(default=timezone.now())
+    datetime_created = models.DateTimeField(default='django.utils.timezone.now')
     datetime_modified = models.DateTimeField(auto_now=True)
 
     def get_absolute_url(self):
