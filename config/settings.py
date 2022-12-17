@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'pages',
     'products',
     'cart',
-    'orders',
+    'order',
 
     # installed app
     'crispy_forms',
