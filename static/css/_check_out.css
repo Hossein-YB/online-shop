@@ -1,7 +1,11 @@
 .checkout-title h2 {
     font-size: 23px;
 }
-
+div.form-group ul.errorlist li{
+    margin-top: 0.3rem;
+    font-size: 13px;
+    color: #b50000;
+}
 .checkout-title h2::after {
     content: "";
     width: 50px;

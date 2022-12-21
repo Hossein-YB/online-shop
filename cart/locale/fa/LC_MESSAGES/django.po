@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-12 09:45+0330\n"
-"PO-Revision-Date: 2022-12-12 09:48+0330\n"
+"POT-Creation-Date: 2022-12-21 17:58+0330\n"
+"PO-Revision-Date: 2022-12-21 17:59+0330\n"
 "Last-Translator:   <hossein@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -27,10 +27,13 @@ msgid "The product has been removed"
 msgstr "محصول از سبد خرید شما حذف شد"
 
 #: .\cart.py:73
-#| msgid "Your Cart is clen"
 msgid "Your Cart is clean"
 msgstr "سبد خرید شما خالی است"
 
-#: .\templates\cart\cart_detail.html:79 .\templates\cart\cart_detail.html:109
+#: .\templates\cart\cart_detail.html:81 .\templates\cart\cart_detail.html:111
 msgid "$"
 msgstr "تومان"
+
+#: .\templates\cart\cart_detail.html:119
+msgid "order by"
+msgstr "ثبت سفارش"

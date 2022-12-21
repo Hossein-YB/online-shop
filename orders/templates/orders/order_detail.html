@@ -28,55 +28,64 @@
                                         <h2>جزئیات سفارش</h2>
                                     </div>
                                     <div class="checkout-form">
-                                        <form action="#" class="form form-checkout">
+                                        <form action="#" method="post" class="form form-checkout">
+                                            {% csrf_token %}
                                             <div class="form-row mb-3">
                                                 <div class="form-group col-md-6 mb-sm--30">
-                                                    <label for="billing_fname" class="form-label form-label-2">نام <span
-                                                            class="required">*</span></label>
-                                                    <input type="text" name="billing_fname" id="billing_fname"
+                                                    <label for="billing_fname" class="form-label form-label-2">{% translate "First name" %} <span class="required">*</span></label>
+                                                    <input type="text" name="first_name" id="billing_fname"
                                                            class="form-input form-input-2">
+                                                    {% if order_form.errors.first_name %}
+                                                        <p class="error-form">{{ order_form.errors.first_name }}</p>
+                                                    {% endif %}
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label for="billing_lname" class="form-label form-label-2">نام
-                                                        خانوادگی <span class="required">*</span></label>
-                                                    <input type="text" name="billing_lname" id="billing_lname"
+                                                    <label for="billing_lname" class="form-label form-label-2">{% translate "Last name" %} <span class="required">*</span></label>
+                                                    <input type="text" name="last_name" id="billing_lname"
                                                            class="form-input form-input-2">
-                                                </div>
-                                            </div>
-                                            <div class="form-row mb--20">
-                                                <div class="form-group col-12">
-                                                    <label for="billing_company"
-                                                           class="form-label form-label-2">آدرس</label>
-                                                    <input type="text" name="billing_company" id="billing_company"
-                                                           class="form-input form-input-2">
-                                                </div>
-                                            </div>
-                                            <div class="form-row mb--20">
-                                                <div class="form-group col-12">
-                                                    <label for="billing_phone" class="form-label form-label-2">شماره
-                                                        همراه <span class="required">*</span></label>
-                                                    <input type="text" name="billing_phone" id="billing_phone"
-                                                           class="form-input form-input-2">
-                                                </div>
-                                            </div>
-                                            <div class="form-row mb--20">
-                                                <div class="form-group col-12">
-                                                    <label for="billing_email" class="form-label form-label-2">ایمیل
-                                                        <span class="required">*</span></label>
-                                                    <input type="email" name="billing_email" id="billing_email"
-                                                           class="form-input form-input-2">
+                                                    {% if order_form.errors.last_name %}
+                                                        <div class="error-form"> {{ order_form.errors.last_name }} </div>
+                                                    {% endif %}
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-12">
-                                                    <label for="orderNotes" class="form-label form-label-2">یادداشت
-                                                        شما</label>
+                                                    <label for="billing_company"
+                                                           class="form-label form-label-2">{% translate "Address" %} <span class="required">*</span></label>
+                                                    <input type="text" name="address" id="billing_company"
+                                                           class="form-input form-input-2">
+                                                    {% if order_form.errors.address %}
+                                                        <p class="error-form">{{ order_form.errors.address }}</p>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-12">
+                                                    <label for="billing_phone" class="form-label form-label-2">{% translate "Phone number" %} <span class="required">*</span></label>
+                                                    <input type="text" name="phone_number" id="billing_phone"
+                                                           class="form-input form-input-2">
+                                                    {% if order_form.errors.phone_number %}
+                                                        <p class="error-form">{{ order_form.errors.phone_number }}</p>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-12">
+                                                    <label for="orderNotes" class="form-label form-label-2">{% translate "Note" %}</label>
                                                     <textarea class="form-input form-input-2 form-input-textarea"
                                                               id="orderNotes" name="orderNotes"
                                                               placeholder="اگر یادداشتی دارید در اینجا وارد کنید. در غیر این صورت این مکان را خالی بگذارید"></textarea>
+                                                    {% if order_form.errors.order_note %}
+                                                        <p class="error-form">{{ order_form.errors.order_note }}</p>
+                                                    {% endif %}
                                                 </div>
                                             </div>
+                                            <div class="form-row">
+                                                <button class="btn btn-success form-control text-black-50" type="submit"
+                                                        value="">{% translate "Submit" %}</button>
+                                            </div>
                                         </form>
+
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-5">
@@ -93,10 +102,12 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                {% for item in cart%}
+                                                {% for item in cart %}
                                                     <tr>
-                                                        <th><a class="text-dark text-decoration-none" href="{% url 'product_detail' item.product_obj.id %}">{{ item.product_obj.title }}</a>
-                                                            <strong><span>&#10005;</span> {{ item.quantity|english_to_persian }}</strong>
+                                                        <th><a class="text-dark text-decoration-none"
+                                                               href="{% url 'product_detail' item.product_obj.id %}">{{ item.product_obj.title }}</a>
+                                                            <strong><span>&#10005;</span> {{ item.quantity|english_to_persian }}
+                                                            </strong>
                                                         </th>
                                                         <td class="text-left">{{ item.total_price|intcomma:False|english_to_persian }} {% translate '$' %}</td>
                                                     </tr>

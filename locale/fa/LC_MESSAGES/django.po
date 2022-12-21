@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-12 08:04+0330\n"
+"POT-Creation-Date: 2022-12-21 18:00+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-#: .\_base.html:204
+
+#: .\_base.html:205
 msgid "Profile"
 msgstr "حساب کاربری"
 
@@ -32,6 +33,60 @@ msgstr "ورود"
 msgid "Sing up"
 msgstr "ثبت نام"
 
+#: .\_base.html:426
+msgid "cart"
+msgstr ""
+
+#: .\_base.html:465
+msgid "total"
+msgstr ""
+
+#: .\_base.html:469
+msgid "Show cart"
+msgstr ""
+
+#: .\_base.html:470
+msgid "Pay"
+msgstr ""
+
 #: .\account\email\email_confirmation-subject.txt:3
 msgid "confirm your email address:"
 msgstr "آدرس ایمیل خود را تایید کنید"
+
+#: .\account\email\email_confirmation_message.txt:5
+#, python-format
+msgid ""
+"\n"
+"Hello %(site_name)s.\n"
+"\n"
+"if your requested this email please click on this link\n"
+"%(activate_url)s\n"
+"\n"
+msgstr ""
+
+#: .\account\email_confirm.html:4 .\account\email_confirm.html:8
+#, fuzzy
+#| msgid "confirm your email address:"
+msgid "Confirm E-mail Address"
+msgstr "آدرس ایمیل خود را تایید کنید"
+
+#: .\account\email_confirm.html:14
+#, python-format
+msgid ""
+"Please confirm that\n"
+"            <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail address "
+"for user %(user_display)s\n"
+"            ."
+msgstr ""
+
+#: .\account\email_confirm.html:20
+msgid "Confirm"
+msgstr ""
+
+#: .\account\email_confirm.html:27
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please\n"
+"            <a href=\"%(email_url)s\">issue a new e-mail confirmation "
+"request</a>."
+msgstr ""
