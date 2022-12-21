@@ -5,6 +5,7 @@
 {% load i18n %}
 {% load jalali_tags %}
 {% load convert_number %}
+{% load humanize %}
 
 {% block page_tilte %}
     {% translate "order detail" %}
@@ -92,23 +93,19 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <th>محصول شماره یک
-                                                        <strong><span>&#10005;</span>۲</strong>
-                                                    </th>
-                                                    <td class="text-left">۲۹۶,۰۰۰ تومان</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>محصول شماره دو
-                                                        <strong><span>&#10005;</span>۱</strong>
-                                                    </th>
-                                                    <td class="text-left">۵۸,۰۰۰ تومان</td>
-                                                </tr>
+                                                {% for item in cart%}
+                                                    <tr>
+                                                        <th><a class="text-dark text-decoration-none" href="{% url 'product_detail' item.product_obj.id %}">{{ item.product_obj.title }}</a>
+                                                            <strong><span>&#10005;</span> {{ item.quantity|english_to_persian }}</strong>
+                                                        </th>
+                                                        <td class="text-left">{{ item.total_price|intcomma:False|english_to_persian }} {% translate '$' %}</td>
+                                                    </tr>
+                                                {% endfor %}
                                                 </tbody>
                                                 <tfoot>
                                                 <tr class="cart-subtotal">
-                                                    <th>مجموع</th>
-                                                    <td class="text-left">۳۴۸,۰۰۰ تومان</td>
+                                                    <th>{% trans 'total' %}</th>
+                                                    <td class="text-left">{{ cart.get_total_price|intcomma:False|english_to_persian }} {% translate '$' %}</td>
                                                 </tr>
                                                 </tfoot>
                                             </table>
