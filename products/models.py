@@ -6,6 +6,10 @@ from django.utils import timezone
 from ckeditor.fields import RichTextField
 
 
+class Discount(models.Model):
+    discount_per = models.IntegerField(verbose_name=_("discount percentage"))
+
+
 class Products(models.Model):
     title = models.CharField(max_length=100)
     description = RichTextField()

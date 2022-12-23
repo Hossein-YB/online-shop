@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from .forms import OrderForms
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -35,8 +35,6 @@ def order_detail_view(request):
                 )
             cart.clear()
             messages.success(request, _("successfully Pay"))
-
-    else:
-        order_form = OrderForms()
+        return reverse("cart:cart_detail")
 
     return render(request, 'orders/order_detail.html', context={'order_form': order_form})

@@ -51,13 +51,13 @@ div.form-group ul.errorlist li{
     border: 2px solid #eeeeee;
 }
 
-.table th,
-.table td {
+.table.order-table th,
+.table.order-table td {
     min-width: 100px;
 }
 
-.table thead th,
-.table th {
+.table.order-table thead th,
+.table.order-table th {
     text-transform: uppercase;
     padding: 13px 0;
     letter-spacing: 1px;

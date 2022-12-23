@@ -438,7 +438,7 @@
                     <li class="mini-cart-product d-flex justify-content-between px-4">
                     <div class="mini-cart-product-image">
                         <a href="#">
-                            <img src="assets/img/prod-1-100x100.jpg" alt="products">
+                            <img src="{{ item.product_obj.image.url }}" alt="products">
                         </a>
                     </div>
                     <div class="mini-cart-product-content pt-2">
@@ -467,7 +467,7 @@
             </div>
             <div class="d-flex flex-column justify-content-center pr-5">
                 <a href="{% url 'cart:cart_detail' %}" class="btn btn-info mb-2 mt-2">{% translate 'Show cart' %}</a>
-                <a href="#" class="btn btn-success ">{% translate 'Pay' %}</a>
+                <a href="{% url 'order_detail' %}" class="btn btn-success ">{% translate 'Order' %}</a>
             </div>
         </div>
     </div>
