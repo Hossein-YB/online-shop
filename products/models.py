@@ -6,10 +6,6 @@ from django.utils import timezone
 from ckeditor.fields import RichTextField
 
 
-class Discount(models.Model):
-    discount_per = models.IntegerField(verbose_name=_("discount percentage"))
-
-
 class Products(models.Model):
     title = models.CharField(max_length=100)
     description = RichTextField()
@@ -17,7 +13,7 @@ class Products(models.Model):
     active = models.BooleanField(default=True)
     image = models.ImageField(verbose_name=_("product Image"), upload_to='product/product_image/')
 
-    datetime_created = models.DateTimeField(default=timezone.now())
+    datetime_created = models.DateTimeField(default=timezone.datetime.now())
     datetime_modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
@@ -42,7 +38,7 @@ class Comments(models.Model):
     star = models.CharField(max_length=10, choices=PRODUCT_STARS, verbose_name=_("whats your score"))
     active = models.BooleanField(default=True)
 
-    datetime_created = models.DateTimeField(default=timezone.now())
+    datetime_created = models.DateTimeField(default=timezone.datetime.now())
     datetime_modified = models.DateTimeField(auto_now=True)
 
     def get_absolute_url(self):
