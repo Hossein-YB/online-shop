@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from django.views import generic
 
-# Create your views here.
+
+class PostListView(generic.ListView):
+    pass
+
+
+class PostDetailView(generic.DetailView):
+    pass
+
+
