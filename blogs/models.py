@@ -5,7 +5,24 @@ from django.shortcuts import reverse
 from django.contrib.auth import get_user_model
 
 
+class BlogCategories(models.Model):
+    name = models.CharField(max_length=1000, verbose_name=_("category"))
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE,
+                             related_name="categories", verbose_name=_("creator"), )
+
+    datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_("created datetime"))
+    datetime_modified = models.DateTimeField(auto_now=True, verbose_name=_("update datetime"))
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('blog:blog_post_list', args=[self.id, ])
+
+
 class Blog(models.Model):
+    categories = models.ForeignKey(BlogCategories, on_delete=models.CASCADE,
+                                   related_name='category', verbose_name=(_('category')))
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE,
                              related_name="user_posts", verbose_name=_("creator"), )
     title = models.CharField(max_length=1000, verbose_name=_("post title"))
@@ -20,7 +37,5 @@ class Blog(models.Model):
 
     def get_absolute_url(self):
         return reverse('blog:post_detail', args=[self.id, ])
-
-
 
 
