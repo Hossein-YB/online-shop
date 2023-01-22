@@ -1,0 +1,572 @@
+{% extends '_base_blog.html' %}
+{% load i18n %}
+{% block page_tilte %}
+    {% translate "Blog Home" %}
+{% endblock %}
+
+{% block content %}
+
+    <!-- start top nav -->
+    <div class="container-fluid bg-top-nav">
+        <div class="row">
+            <div class="col-sm-12 mt-3">
+                <div class="container">
+                    <div class="row nav-blog no-gutters">
+                        <div class="col-md-2 text-center pt-3 pr-2 text-right d-none d-md-block">
+                            <p class="hashtag-title">هشتگ های داغ:</p>
+                        </div>
+                        <div class="col-sm-12 col-md-10 nav-hashtag pt-4">
+                            <ul class="d-flex justify-content-center align-items-center">
+                                {% for category in categories %}
+                                <li class=""><a href="{{ category.get_absolute_url }}">#{{ category.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3 pb-3">
+            <div class="col-sm-12">
+                <div class="container">
+                    <div class="row ">
+                        <div class="col-sm-12 text-center pt-3 px-5 text-center">
+                            <div>
+                                <form action="">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="بین 100000 مطالب ما جستجو کن">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-success px-md-5" type="submit"><span class="flaticon flaticon-magnifying-glass-icon"></span></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <nav class="navbar navbar-expand-lg navbar-dark">
+                                <a class="text-white" href="#">جدیدترین مطالب</a>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                  <span class="navbar-toggler-icon"></span>
+                                </button>
+
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="nav justify-content-center navbar-expand-xl">
+                                        <li class="nav-item">
+                                            <a class="nav-link text-white" href="#">تکنولوژی و کالای دیجیتال</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-white" href="#"> بازی و سرگرمی</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-white" href="#">کتاب و ادبیات</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-white" href="#">فرهنگ و هنر</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-white" href="#">سبک زندگی</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-white" href="#">اتاق خبر</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-white" href="index.html">فروشگاه ما</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- end top nav -->
+
+    <!--start top menu -->
+    <div class="container">
+        <div class="row p-3 no-gutters top-conten">
+            <div class="col-sm-12 col-md-6">
+                <a href="blog-post-detail.html">
+                    <div class="position-relative">
+                        <img src="assets/img/blog/daughter-giving-gift-box-mother.jpg" alt="" class="w-100 p-1 first-content">
+                        <div class="caption-blog">
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non, officiis.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="c-col-sm-6 col-sm-6 col-md-3 d-flex flex-column ">
+                <a href="blog-post-detail.html">
+                    <div class="position-relative">
+                        <img src="assets/img/blog/Blood_Sweat_and_Pixels_book.jpg" class="w-100 p-1 second-content" alt="">
+                        <div class="caption-blog">
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non, officiis.</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="blog-post-detail.html">
+                    <div class="position-relative">
+                        <img src="assets/img/blog/eyes_cleaner.jpg" class="w-100 p-1 third-content" alt="">
+                        <div class="caption-blog">
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non, officiis.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="c-col-sm-6 col-sm-6 col-md-3 d-flex flex-column">
+                <a href="blog-post-detail.html">
+                    <div class="position-relative">
+                        <img src="assets/img/blog/wash.jpg" class="w-100 p-1 third-content" alt="">
+                        <div class="caption-blog">
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non, officiis.</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="blog-post-detail.html">
+                    <div class="position-relative">
+                        <img src="assets/img/blog/آمبره.jpg" class="w-100 p-1 second-content" alt="">
+                        <div class="caption-blog">
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non, officiis.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--end top menu  owl-carousel-blog-->
+    <!--start top menu -->
+    <div class="container-fluid mt-2">
+        <div class="row mb-2">
+            <div class="col-sm-12">
+                <div class="container">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-sm-8 d-flex justify-content-center align-items-center title-slider-blog">
+                            <p class="pr-3"><span class="bold">منتخب</span> سردبیر</p>
+                            <div class="module-bloge-title"></div>
+                            <a href="#" class="text-decoration-none show-more">موارد بیشتر</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="owl-carousel owl-carousel-blog owl-theme">
+                    <div class="item">
+                        <div class="card card-slider" style="width: 17rem;">
+                            <a href="blog_post_list.html">
+                                <img class="blog-post-image" src="assets/img/blog/blog-1.jpg" alt="blog post">
+                            </a>
+                            <div class="card-body">
+                                <a href="blog_post_list.html" class="d-block text-decoration-none blog-post-title">بررسی گوشی شیائومی ردمی ۹A؛ بسیار ارزان ولی باکیفیت</a>
+                                <div class="d-flex justify-content-around author-blog">
+                                    <a href="#"><img src="assets/img/blog/t2.png" alt="author image" class="blog-author-img"></a>
+                                    <a href="#" class="blog-author-name">
+                                        <p>Hossein yaghoybi</p>
+                                    </a>
+                                </div>
+                                <p class="blog-date">
+                                    10 دی 1401
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="card card-slider" style="width: 17rem;">
+                            <a href="blog_post_list.html">
+                                <img class="blog-post-image" src="assets/img/blog/blog-1.jpg" alt="blog post">
+                            </a>
+                            <div class="card-body">
+                                <a href="blog_post_list.html" class="d-block text-decoration-none blog-post-title">بررسی گوشی شیائومی ردمی ۹A؛ بسیار ارزان ولی باکیفیت</a>
+                                <div class="d-flex justify-content-around author-blog">
+                                    <a href="#"><img src="assets/img/blog/t2.png" alt="author image" class="blog-author-img"></a>
+                                    <a href="#" class="blog-author-name">
+                                        <p>Hossein yaghoybi</p>
+                                    </a>
+                                </div>
+                                <p class="blog-date">
+                                    10 دی 1401
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="card card-slider" style="width: 17rem;">
+                            <a href="blog_post_list.html">
+                                <img class="blog-post-image" src="assets/img/blog/blog-1.jpg" alt="blog post">
+                            </a>
+                            <div class="card-body">
+                                <a href="blog_post_list.html" class="d-block text-decoration-none blog-post-title">بررسی گوشی شیائومی ردمی ۹A؛ بسیار ارزان ولی باکیفیت</a>
+                                <div class="d-flex justify-content-around author-blog">
+                                    <a href="#"><img src="assets/img/blog/t2.png" alt="author image" class="blog-author-img"></a>
+                                    <a href="#" class="blog-author-name">
+                                        <p>Hossein yaghoybi</p>
+                                    </a>
+                                </div>
+                                <p class="blog-date">
+                                    10 دی 1401
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="card card-slider" style="width: 17rem;">
+                            <a href="blog_post_list.html">
+                                <img class="blog-post-image" src="assets/img/blog/blog-1.jpg" alt="blog post">
+                            </a>
+                            <div class="card-body">
+                                <a href="blog_post_list.html" class="d-block text-decoration-none blog-post-title">بررسی گوشی شیائومی ردمی ۹A؛ بسیار ارزان ولی باکیفیت</a>
+                                <div class="d-flex justify-content-around author-blog">
+                                    <a href="#"><img src="assets/img/blog/t2.png" alt="author image" class="blog-author-img"></a>
+                                    <a href="#" class="blog-author-name">
+                                        <p>Hossein yaghoybi</p>
+                                    </a>
+                                </div>
+                                <p class="blog-date">
+                                    10 دی 1401
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="card card-slider" style="width: 17rem;">
+                            <a href="blog_post_list.html">
+                                <img class="blog-post-image" src="assets/img/blog/blog-1.jpg" alt="blog post">
+                            </a>
+                            <div class="card-body">
+                                <a href="blog_post_list.html" class="d-block text-decoration-none blog-post-title">بررسی گوشی شیائومی ردمی ۹A؛ بسیار ارزان ولی باکیفیت</a>
+                                <div class="d-flex justify-content-around author-blog">
+                                    <a href="#"><img src="assets/img/blog/t2.png" alt="author image" class="blog-author-img"></a>
+                                    <a href="#" class="blog-author-name">
+                                        <p>Hossein yaghoybi</p>
+                                    </a>
+                                </div>
+                                <p class="blog-date">
+                                    10 دی 1401
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="card card-slider" style="width: 17rem;">
+                            <a href="blog_post_list.html">
+                                <img class="blog-post-image" src="assets/img/blog/blog-1.jpg" alt="blog post">
+                            </a>
+                            <div class="card-body">
+                                <a href="blog_post_list.html" class="d-block text-decoration-none blog-post-title">بررسی گوشی شیائومی ردمی ۹A؛ بسیار ارزان ولی باکیفیت</a>
+                                <div class="d-flex justify-content-around author-blog">
+                                    <a href="#"><img src="assets/img/blog/t2.png" alt="author image" class="blog-author-img"></a>
+                                    <a href="#" class="blog-author-name">
+                                        <p>Hossein yaghoybi</p>
+                                    </a>
+                                </div>
+                                <p class="blog-date">
+                                    10 دی 1401
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="card card-slider" style="width: 17rem;">
+                            <a href="blog_post_list.html">
+                                <img class="blog-post-image" src="assets/img/blog/blog-1.jpg" alt="blog post">
+                            </a>
+                            <div class="card-body">
+                                <a href="blog_post_list.html" class="d-block text-decoration-none blog-post-title">بررسی گوشی شیائومی ردمی ۹A؛ بسیار ارزان ولی باکیفیت</a>
+                                <div class="d-flex justify-content-around author-blog">
+                                    <a href="#"><img src="assets/img/blog/t2.png" alt="author image" class="blog-author-img"></a>
+                                    <a href="#" class="blog-author-name">
+                                        <p>Hossein yaghoybi</p>
+                                    </a>
+                                </div>
+                                <p class="blog-date">
+                                    10 دی 1401
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="card card-slider" style="width: 17rem;">
+                            <a href="blog_post_list.html">
+                                <img class="blog-post-image" src="assets/img/blog/blog-1.jpg" alt="blog post">
+                            </a>
+                            <div class="card-body">
+                                <a href="blog_post_list.html" class="d-block text-decoration-none blog-post-title">بررسی گوشی شیائومی ردمی ۹A؛ بسیار ارزان ولی باکیفیت</a>
+                                <div class="d-flex justify-content-around author-blog">
+                                    <a href="#"><img src="assets/img/blog/t2.png" alt="author image" class="blog-author-img"></a>
+                                    <a href="#" class="blog-author-name">
+                                        <p>Hossein yaghoybi</p>
+                                    </a>
+                                </div>
+                                <p class="blog-date">
+                                    10 دی 1401
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="card card-slider" style="width: 17rem;">
+                            <a href="blog_post_list.html">
+                                <img class="blog-post-image" src="assets/img/blog/blog-1.jpg" alt="blog post">
+                            </a>
+                            <div class="card-body">
+                                <a href="blog_post_list.html" class="d-block text-decoration-none blog-post-title">بررسی گوشی شیائومی ردمی ۹A؛ بسیار ارزان ولی باکیفیت</a>
+                                <div class="d-flex justify-content-around author-blog">
+                                    <a href="#"><img src="assets/img/blog/t2.png" alt="author image" class="blog-author-img"></a>
+                                    <a href="#" class="blog-author-name">
+                                        <p>Hossein yaghoybi</p>
+                                    </a>
+                                </div>
+                                <p class="blog-date">
+                                    10 دی 1401
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end top menu -->
+    <!--start menu -->
+    <div class="container mt-2">
+        <div class="row mb-2">
+            <div class="col-sm-12">
+                <div class="container">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-sm-8 d-flex justify-content-center align-items-center title-slider-blog">
+                            <p class="pr-3"><span class="bold">مطالب</span> اخیر</p>
+                            <div class="module-bloge-title"></div>
+                            <a href="blog_post_list.html" class="text-decoration-none show-more">موارد بیشتر</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 d-flex flex-row flex-wrap">
+                <div class="card card-custom">
+                    <a href="blog_post_list.html" class=""><img class="w-100 h-100" src="assets/img/blog/apple.jpg" alt="blog post"></a>
+                    <div class="card-body">
+                        <a href="blog_post_list.html" class="text-decoration-none">
+                            <h5 class="blog-post-title-recent">اپل از نسل جدید مک‌بوک پرو ۱۴ و ۱۶ اینچی با تراشه‌های جدید رونمایی کرد</h5>
+                        </a>
+                        <p class="more-about-post">ساعاتی قبل اپل بی سروصدا از نسل جدید مدل 14 و 16 اینچی مک‌بوک پرو رونمایی کرد که همراه با تراشه‌های ... </p>
+                        <div class="d-flex justify-content-around author-blog">
+                            <a href="#"><img src="assets/img/blog/t2.png" alt="author image" class="blog-author-img"></a>
+                            <a href="#" class="blog-author-name">
+                                <p>Hossein yaghoybi</p>
+                            </a>
+                        </div>
+                        <p class="blog-date">
+                            10 دی 1401
+                        </p>
+                    </div>
+                </div>
+                <div class="card card-custom">
+                    <a href="blog_post_list.html" class=""><img class="w-100 h-100" src="assets/img/blog/apple.jpg" alt="blog post"></a>
+                    <div class="card-body">
+                        <a href="blog_post_list.html" class="text-decoration-none">
+                            <h5 class="blog-post-title-recent">اپل از نسل جدید مک‌بوک پرو ۱۴ و ۱۶ اینچی با تراشه‌های جدید رونمایی کرد</h5>
+                        </a>
+                        <p class="more-about-post">ساعاتی قبل اپل بی سروصدا از نسل جدید مدل 14 و 16 اینچی مک‌بوک پرو رونمایی کرد که همراه با تراشه‌های ... </p>
+                        <div class="d-flex justify-content-around author-blog">
+                            <a href="#"><img src="assets/img/blog/t2.png" alt="author image" class="blog-author-img"></a>
+                            <a href="#" class="blog-author-name">
+                                <p>Hossein yaghoybi</p>
+                            </a>
+                        </div>
+                        <p class="blog-date">
+                            10 دی 1401
+                        </p>
+                    </div>
+                </div>
+                <div class="card card-custom">
+                    <a href="blog_post_list.html" class=""><img class="w-100 h-100" src="assets/img/blog/apple.jpg" alt="blog post"></a>
+                    <div class="card-body">
+                        <a href="blog_post_list.html" class="text-decoration-none">
+                            <h5 class="blog-post-title-recent">اپل از نسل جدید مک‌بوک پرو ۱۴ و ۱۶ اینچی با تراشه‌های جدید رونمایی کرد</h5>
+                        </a>
+                        <p class="more-about-post">ساعاتی قبل اپل بی سروصدا از نسل جدید مدل 14 و 16 اینچی مک‌بوک پرو رونمایی کرد که همراه با تراشه‌های ... </p>
+                        <div class="d-flex justify-content-around author-blog">
+                            <a href="#"><img src="assets/img/blog/t2.png" alt="author image" class="blog-author-img"></a>
+                            <a href="#" class="blog-author-name">
+                                <p>Hossein yaghoybi</p>
+                            </a>
+                        </div>
+                        <p class="blog-date">
+                            10 دی 1401
+                        </p>
+                    </div>
+                </div>
+                <div class="card card-custom">
+                    <a href="blog_post_list.html" class=""><img class="w-100 h-100" src="assets/img/blog/apple.jpg" alt="blog post"></a>
+                    <div class="card-body">
+                        <a href="blog_post_list.html" class="text-decoration-none">
+                            <h5 class="blog-post-title-recent">اپل از نسل جدید مک‌بوک پرو ۱۴ و ۱۶ اینچی با تراشه‌های جدید رونمایی کرد</h5>
+                        </a>
+                        <p class="more-about-post">ساعاتی قبل اپل بی سروصدا از نسل جدید مدل 14 و 16 اینچی مک‌بوک پرو رونمایی کرد که همراه با تراشه‌های ... </p>
+                        <div class="d-flex justify-content-around author-blog">
+                            <a href="#"><img src="assets/img/blog/t2.png" alt="author image" class="blog-author-img"></a>
+                            <a href="#" class="blog-author-name">
+                                <p>Hossein yaghoybi</p>
+                            </a>
+                        </div>
+                        <p class="blog-date">
+                            10 دی 1401
+                        </p>
+                    </div>
+                </div>
+                <div class="card card-custom">
+                    <a href="blog_post_list.html" class=""><img class="w-100 h-100" src="assets/img/blog/apple.jpg" alt="blog post"></a>
+                    <div class="card-body">
+                        <a href="blog_post_list.html" class="text-decoration-none">
+                            <h5 class="blog-post-title-recent">اپل از نسل جدید مک‌بوک پرو ۱۴ و ۱۶ اینچی با تراشه‌های جدید رونمایی کرد</h5>
+                        </a>
+                        <p class="more-about-post">ساعاتی قبل اپل بی سروصدا از نسل جدید مدل 14 و 16 اینچی مک‌بوک پرو رونمایی کرد که همراه با تراشه‌های ... </p>
+                        <div class="d-flex justify-content-around author-blog">
+                            <a href="#"><img src="assets/img/blog/t2.png" alt="author image" class="blog-author-img"></a>
+                            <a href="#" class="blog-author-name">
+                                <p>Hossein yaghoybi</p>
+                            </a>
+                        </div>
+                        <p class="blog-date">
+                            10 دی 1401
+                        </p>
+                    </div>
+                </div>
+                <div class="card card-custom">
+                    <a href="blog_post_list.html" class=""><img class="w-100 h-100" src="assets/img/blog/apple.jpg" alt="blog post"></a>
+                    <div class="card-body">
+                        <a href="blog_post_list.html" class="text-decoration-none">
+                            <h5 class="blog-post-title-recent">اپل از نسل جدید مک‌بوک پرو ۱۴ و ۱۶ اینچی با تراشه‌های جدید رونمایی کرد</h5>
+                        </a>
+                        <p class="more-about-post">ساعاتی قبل اپل بی سروصدا از نسل جدید مدل 14 و 16 اینچی مک‌بوک پرو رونمایی کرد که همراه با تراشه‌های ... </p>
+                        <div class="d-flex justify-content-around author-blog">
+                            <a href="#"><img src="assets/img/blog/t2.png" alt="author image" class="blog-author-img"></a>
+                            <a href="#" class="blog-author-name">
+                                <p>Hossein yaghoybi</p>
+                            </a>
+                        </div>
+                        <p class="blog-date">
+                            10 دی 1401
+                        </p>
+                    </div>
+                </div>
+                <div class="card card-custom">
+                    <a href="blog_post_list.html" class=""><img class="w-100 h-100" src="assets/img/blog/apple.jpg" alt="blog post"></a>
+                    <div class="card-body">
+                        <a href="blog_post_list.html" class="text-decoration-none">
+                            <h5 class="blog-post-title-recent">اپل از نسل جدید مک‌بوک پرو ۱۴ و ۱۶ اینچی با تراشه‌های جدید رونمایی کرد</h5>
+                        </a>
+                        <p class="more-about-post">ساعاتی قبل اپل بی سروصدا از نسل جدید مدل 14 و 16 اینچی مک‌بوک پرو رونمایی کرد که همراه با تراشه‌های ... </p>
+                        <div class="d-flex justify-content-around author-blog">
+                            <a href="#"><img src="assets/img/blog/t2.png" alt="author image" class="blog-author-img"></a>
+                            <a href="#" class="blog-author-name">
+                                <p>Hossein yaghoybi</p>
+                            </a>
+                        </div>
+                        <p class="blog-date">
+                            10 دی 1401
+                        </p>
+                    </div>
+                </div>
+                <div class="card card-custom">
+                    <a href="blog_post_list.html" class=""><img class="w-100 h-100" src="assets/img/blog/apple.jpg" alt="blog post"></a>
+                    <div class="card-body">
+                        <a href="blog_post_list.html" class="text-decoration-none">
+                            <h5 class="blog-post-title-recent">اپل از نسل جدید مک‌بوک پرو ۱۴ و ۱۶ اینچی با تراشه‌های جدید رونمایی کرد</h5>
+                        </a>
+                        <p class="more-about-post">ساعاتی قبل اپل بی سروصدا از نسل جدید مدل 14 و 16 اینچی مک‌بوک پرو رونمایی کرد که همراه با تراشه‌های ... </p>
+                        <div class="d-flex justify-content-around author-blog">
+                            <a href="#"><img src="assets/img/blog/t2.png" alt="author image" class="blog-author-img"></a>
+                            <a href="#" class="blog-author-name">
+                                <p>Hossein yaghoybi</p>
+                            </a>
+                        </div>
+                        <p class="blog-date">
+                            10 دی 1401
+                        </p>
+                    </div>
+                </div>
+                <div class="card card-custom">
+                    <a href="blog_post_list.html" class=""><img class="w-100 h-100" src="assets/img/blog/apple.jpg" alt="blog post"></a>
+                    <div class="card-body">
+                        <a href="blog_post_list.html" class="text-decoration-none">
+                            <h5 class="blog-post-title-recent">اپل از نسل جدید مک‌بوک پرو ۱۴ و ۱۶ اینچی با تراشه‌های جدید رونمایی کرد</h5>
+                        </a>
+                        <p class="more-about-post">ساعاتی قبل اپل بی سروصدا از نسل جدید مدل 14 و 16 اینچی مک‌بوک پرو رونمایی کرد که همراه با تراشه‌های ... </p>
+                        <div class="d-flex justify-content-around author-blog">
+                            <a href="#"><img src="assets/img/blog/t2.png" alt="author image" class="blog-author-img"></a>
+                            <a href="#" class="blog-author-name">
+                                <p>Hossein yaghoybi</p>
+                            </a>
+                        </div>
+                        <p class="blog-date">
+                            10 دی 1401
+                        </p>
+                    </div>
+                </div>
+                <div class="card card-custom">
+                    <a href="blog_post_list.html" class=""><img class="w-100 h-100" src="assets/img/blog/apple.jpg" alt="blog post"></a>
+                    <div class="card-body">
+                        <a href="blog_post_list.html" class="text-decoration-none">
+                            <h5 class="blog-post-title-recent">اپل از نسل جدید مک‌بوک پرو ۱۴ و ۱۶ اینچی با تراشه‌های جدید رونمایی کرد</h5>
+                        </a>
+                        <p class="more-about-post">ساعاتی قبل اپل بی سروصدا از نسل جدید مدل 14 و 16 اینچی مک‌بوک پرو رونمایی کرد که همراه با تراشه‌های ... </p>
+                        <div class="d-flex justify-content-around author-blog">
+                            <a href="#"><img src="assets/img/blog/t2.png" alt="author image" class="blog-author-img"></a>
+                            <a href="#" class="blog-author-name">
+                                <p>Hossein yaghoybi</p>
+                            </a>
+                        </div>
+                        <p class="blog-date">
+                            10 دی 1401
+                        </p>
+                    </div>
+                </div>
+                <div class="card card-custom">
+                    <a href="blog_post_list.html" class=""><img class="w-100 h-100" src="assets/img/blog/apple.jpg" alt="blog post"></a>
+                    <div class="card-body">
+                        <a href="blog_post_list.html" class="text-decoration-none">
+                            <h5 class="blog-post-title-recent">اپل از نسل جدید مک‌بوک پرو ۱۴ و ۱۶ اینچی با تراشه‌های جدید رونمایی کرد</h5>
+                        </a>
+                        <p class="more-about-post">ساعاتی قبل اپل بی سروصدا از نسل جدید مدل 14 و 16 اینچی مک‌بوک پرو رونمایی کرد که همراه با تراشه‌های ... </p>
+                        <div class="d-flex justify-content-around author-blog">
+                            <a href="#"><img src="assets/img/blog/t2.png" alt="author image" class="blog-author-img"></a>
+                            <a href="#" class="blog-author-name">
+                                <p>Hossein yaghoybi</p>
+                            </a>
+                        </div>
+                        <p class="blog-date">
+                            10 دی 1401
+                        </p>
+                    </div>
+                </div>
+                <div class="card card-custom">
+                    <a href="blog_post_list.html" class=""><img class="w-100 h-100" src="assets/img/blog/apple.jpg" alt="blog post"></a>
+                    <div class="card-body">
+                        <a href="blog_post_list.html" class="text-decoration-none">
+                            <h5 class="blog-post-title-recent">اپل از نسل جدید مک‌بوک پرو ۱۴ و ۱۶ اینچی با تراشه‌های جدید رونمایی کرد</h5>
+                        </a>
+                        <p class="more-about-post">ساعاتی قبل اپل بی سروصدا از نسل جدید مدل 14 و 16 اینچی مک‌بوک پرو رونمایی کرد که همراه با تراشه‌های ... </p>
+                        <div class="d-flex justify-content-around author-blog">
+                            <a href="#"><img src="assets/img/blog/t2.png" alt="author image" class="blog-author-img"></a>
+                            <a href="#" class="blog-author-name">
+                                <p>Hossein yaghoybi</p>
+                            </a>
+                        </div>
+                        <p class="blog-date">
+                            10 دی 1401
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end menu -->
+
+{% endblock %}

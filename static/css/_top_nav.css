@@ -3,16 +3,16 @@
     color: #fff;
 }
 
-.custom-nav-top,
+.custome-nav-top,
 .bg-top-nav p {
     font-size: 14px;
 }
 
-.custom-nav-top a {
+.custome-nav-top a {
     padding: 7px;
 }
 
-.custom-nav-top .border-left {
+.custome-nav-top .border-left {
     border-color: #4a4a4a !important;
 }
 
@@ -21,17 +21,14 @@
 }
 
 .shop-card span {
-    font-size: 16px;
+    font-size: 16;
 }
-.radius-5{
-    font-size: 14px;
-    border-radius: 40%;
-}
+
 .shop-card i {
     vertical-align: -2;
 }
 
-.custom-dropdown-toggle::after {
+.custome-dropdown-toggle::after {
     vertical-align: 0%;
 }
 
@@ -77,7 +74,7 @@
     color: aqua !important;
 }
 
-.custom-navbar-toggler {
+.custome-navbar-toggler {
     border: none;
 }
 
