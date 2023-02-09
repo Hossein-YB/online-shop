@@ -19,6 +19,11 @@ class BlogCategories(models.Model):
     def get_absolute_url(self):
         return reverse('blog:blog_post_list', args=[self.id, ])
 
+    @classmethod
+    def get_top_category(cls):
+        categories = cls.objects.all().order_by('-count_search')[:5]
+        return categories
+
 
 class CategorySearchHistory(models.Model):
     category = models.ForeignKey(BlogCategories, on_delete=models.CASCADE,
