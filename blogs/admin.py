@@ -1,19 +1,10 @@
 from django.contrib import admin
-from .models import Post, BlogCategories, PostCategories, CategorySearchHistory
-
-
-class PostCategoryAdmin(admin.TabularInline):
-    model = PostCategories
-    extra = 2
+from .models import Post, BlogCategories, CategorySearchHistory
 
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['title', 'user', 'datetime_modified', ]
-
-    inlines = (
-        PostCategoryAdmin,
-    )
+    list_display = ['title', 'is_active', 'user', 'datetime_modified', ]
 
     def save_model(self, request, obj, form, change):
         obj.user = request.user

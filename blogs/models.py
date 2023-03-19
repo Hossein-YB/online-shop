@@ -5,6 +5,14 @@ from django.shortcuts import reverse
 from django.contrib.auth import get_user_model
 
 
+class IsActivePostManager(models.Manager):
+    def get_queryset(self, *args, **kwargs):
+        return super().get_queryset(*args, **kwargs).select_related('category')
+
+    def active_posts(self, *args, **kwargs):
+        return self.get_queryset(*args, **kwargs).filter(is_active=True)
+
+
 class BlogCategories(models.Model):
     name = models.CharField(max_length=1000, verbose_name=_("category"))
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE,
@@ -44,14 +52,22 @@ class CategorySearchHistory(models.Model):
 
 
 class Post(models.Model):
+
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE,
                              related_name="user_posts", verbose_name=_("creator"), )
+    category = models.ForeignKey(BlogCategories, on_delete=models.CASCADE,
+                                 related_name="category", verbose_name=_("creator"), )
+
     title = models.CharField(max_length=1000, verbose_name=_("post title"))
     image = models.ImageField(upload_to="blog/blog_title/", verbose_name=_("post image"))
     body = RichTextField(verbose_name=_("post text"))
+    is_active = models.BooleanField(default=True)
 
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_("created datetime"))
     datetime_modified = models.DateTimeField(auto_now=True, verbose_name=_("update datetime"))
+
+    default_manage = models.Manager()
+    objects = IsActivePostManager()
 
     def __str__(self):
         return self.title
@@ -59,11 +75,15 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('blog:post_detail', args=[self.id, ])
 
+    @classmethod
+    def get_posts(cls, numbers=None):
+        posts = cls.objects.active_posts().order_by('-datetime_created')[:numbers]
 
-class PostCategories(models.Model):
-    category = models.ForeignKey(BlogCategories, on_delete=models.CASCADE,
-                                 related_name="post_categories", verbose_name=_("category"))
-    post = models.ForeignKey(Post, on_delete=models.CASCADE,
-                             related_name="post_categories", verbose_name=_("post"))
+    @classmethod
+    def get_post_detail(cls, post_id):
+        posts = cls.objects.active_posts().get(id)
+        return posts
 
-
+    class Meta:
+        verbose_name = _("Post")
+        verbose_name_plural = _("Posts")

@@ -4,8 +4,9 @@ from blogs.models import Post
 
 
 def home_page_view(request):
-    blog_post = Post.objects.order_by('-datetime_created')[:4]
-    return render(request, 'home.html', {'blog': blog_post})
+
+    posts = Post.get_posts(4)
+    return render(request, 'home.html', context={'posts': posts})
 
 
 class AboutUSPage(TemplateView):
