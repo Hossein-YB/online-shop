@@ -68,7 +68,10 @@ class Post(models.Model):
 
     title = models.CharField(max_length=1000, verbose_name=_("post title"))
     image = models.ImageField(upload_to="blog/blog_title/", verbose_name=_("post image"))
-    description = models.CharField(max_length=1000, default="this is a test for description", verbose_name=_("description about this post"))
+    description = models.CharField(max_length=1000, default="this is a test for description",
+                                   verbose_name=_("description about this post"))
+    like = models.PositiveIntegerField(verbose_name=_("number of like"))
+    dis_like = models.PositiveIntegerField(verbose_name=_("number of unlike"))
     body = RichTextField(verbose_name=_("post text"))
     is_active = models.BooleanField(default=True)
 
@@ -92,6 +95,12 @@ class Post(models.Model):
     @classmethod
     def get_posts(cls, numbers=None):
         posts = cls.objects.active_posts().order_by('-datetime_created')[:numbers]
+        return posts
+
+    @classmethod
+    def get_top_post(cls, numbers=None):
+        posts = cls.objects.active_posts().order_by('-like')[:numbers]
+        return posts
 
     @classmethod
     def get_post_detail(cls, post_id):

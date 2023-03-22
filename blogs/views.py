@@ -9,8 +9,11 @@ def blog_404(request):
     return render(request, 'blogs/blog_404.html')
 
 
-def home_blog_view(request):
-    return render(request, template_name="blogs/home_blog.html")
+class BlogView(generic.ListView):
+    model = Post
+    paginate_by = 20
+    context_object_name = 'posts'
+    template_name = 'blogs/home_blog.html'
 
 
 @require_GET
