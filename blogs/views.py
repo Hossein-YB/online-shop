@@ -1,4 +1,5 @@
-from django.shortcuts import render, reverse
+
+from django.shortcuts import render, reverse, get_object_or_404
 from django.views import generic
 from django.views.decorators.http import require_GET
 from .models import BlogCategories, Post
@@ -34,11 +35,10 @@ def get_user_search(request):
         return reverse('blog:not_find_page')
 
 
-
 class PostListView(generic.ListView):
     pass
 
-class PostDetailView(generic.DetailView):
-    pass
 
-
+def post_detail_view(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    return render(request, template_name="blogs/blog-post-detail.html", context={'post': post})

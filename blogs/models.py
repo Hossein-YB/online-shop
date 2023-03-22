@@ -98,8 +98,9 @@ class Post(models.Model):
         return posts
 
     @classmethod
-    def get_top_post(cls, numbers=None):
+    def get_top_post(cls, numbers=None) -> tuple:
         posts = cls.objects.active_posts().order_by('-like')[:numbers]
+
         return posts
 
     @classmethod
