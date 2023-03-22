@@ -1,0 +1,21 @@
+{% extends '_base_blog.html' %}
+{% load i18n %}
+
+{% block page_tilte %}
+    {% translate "error not find page" %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 d-flex, justify-content-center align-items-center">
+                <h1>{% translate "Oops! The searched article was not found" %}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load humanize %}
 {% load convert_number %}
+
 <!doctype html>
 <html lang="pa">
 
@@ -11,11 +12,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block page_tilte %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap-rtl.css' %}">
-        <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
-        <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
-        <script src="https://kit.fontawesome.com/9d274832ee.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+    <script src="https://kit.fontawesome.com/9d274832ee.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/my_style.css' %}">
 </head>
 <body class="rtl">
 
@@ -26,11 +27,11 @@
             <div class="container">
                 <div class="row nav-blog no-gutters">
                     <div class="col-md-2 text-center pt-3 pr-2 text-right d-none d-md-block">
-                        <p class="hashtag-title">{% translate 'top hashtag' %}</p>
+                        <p class="hashtag-title">هشتگ های داغ</p>
                     </div>
                     <div class="col-sm-12 col-md-10 nav-hashtag pt-4">
                         <ul class="d-flex justify-content-center align-items-center">
-                            {% block category %} {% endblock %}
+                            {% include "blogs/category_.html" %}
                         </ul>
                     </div>
                 </div>
@@ -55,43 +56,8 @@
                             </form>
                         </div>
                     </div>
-{#                    <div class="col-sm-12">#}
-{#                        <nav class="navbar navbar-expand-lg navbar-dark">#}
-{#                            <a class="text-white" href="#">جدیدترین مطالب</a>#}
-{#                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">#}
-{#                              <span class="navbar-toggler-icon"></span>#}
-{#                            </button>#}
-{##}
-{#                            <div class="collapse navbar-collapse" id="navbarSupportedContent">#}
-{#                                <ul class="nav justify-content-center navbar-expand-xl">#}
-{#                                    <li class="nav-item">#}
-{#                                        <a class="nav-link text-white" href="#">تکنولوژی و کالای دیجیتال</a>#}
-{#                                    </li>#}
-{#                                    <li class="nav-item">#}
-{#                                        <a class="nav-link text-white" href="#"> بازی و سرگرمی</a>#}
-{#                                    </li>#}
-{#                                    <li class="nav-item">#}
-{#                                        <a class="nav-link text-white" href="#">کتاب و ادبیات</a>#}
-{#                                    </li>#}
-{#                                    <li class="nav-item">#}
-{#                                        <a class="nav-link text-white" href="#">فرهنگ و هنر</a>#}
-{#                                    </li>#}
-{#                                    <li class="nav-item">#}
-{#                                        <a class="nav-link text-white" href="#">سبک زندگی</a>#}
-{#                                    </li>#}
-{#                                    <li class="nav-item">#}
-{#                                        <a class="nav-link text-white" href="#">اتاق خبر</a>#}
-{#                                    </li>#}
-{#                                    <li class="nav-item">#}
-{#                                        <a class="nav-link text-white" href="index.html">فروشگاه ما</a>#}
-{#                                    </li>#}
-{#                                </ul>#}
-{#                            </div>#}
-{#                        </nav>#}
-{#                    </div>#}
                 </div>
             </div>
-
         </div>
     </div>
 </div>
@@ -102,7 +68,7 @@
 <!-- end body -->
 
 <!-- start footer -->
-<footer class="container-fluid bg-light mt-3 mb-5">
+<footer class="container-fluid bg-light mt-3 p-4 mb-5">
     <div class="row">
         <div class="col-sm-12">
             <div class="container news-latter">
@@ -187,5 +153,6 @@
 
 <script src="{% static 'js/main.js' %}" type="text/javascript"></script>
 
+</div>
 </body>
 </html>

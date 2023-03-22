@@ -1,27 +1,34 @@
-from django.shortcuts import render
+from django.shortcuts import render, reverse
 from django.views import generic
+from django.views.decorators.http import require_GET
 from .models import BlogCategories, Post
 from .forms import FormSearch
 
 
+def blog_404(request):
+    return render(request, 'blogs/blog_404.html')
+
+
 def home_blog_view(request):
-    category_query = BlogCategories.get_top_category()
-    for i in category_query:
-        print(i)
-    return render(request, template_name="blogs/home_blog.html", context={
-        'categories': category_query,
-    })
+    return render(request, template_name="blogs/home_blog.html")
 
 
+@require_GET
 def get_user_search(request):
-    title = FormSearch(request.GET, )
-    if title.is_valid():
-        title = request.GET.get('title')
-        posts = Post.search_in_titles(title)
+    form_search = FormSearch(request.GET, )
 
-    return render(request, template_name="blogs/blog_post_list.html", context={
-        'posts': posts
-    })
+    if form_search.is_valid():
+        search_word = request.GET.get('title')
+
+        posts = Post.searchst_with_word(search_word)
+        for i in posts:
+            print(i)
+        return render(request, template_name="blogs/blog_post_list.html", context={
+            'posts': posts,
+            'search_word': search_word,
+        })
+    else:
+        return reverse('blog:not_find_page')
 
 
 

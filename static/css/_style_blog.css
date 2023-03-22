@@ -156,6 +156,7 @@ ul.nav.justify-content-center li.nav-item a:hover {
 }
 
 .more-about-post {
+    color: black;
     position: relative;
     font-size: 13px;
     padding: 13px;
