@@ -112,7 +112,10 @@ class Post(models.Model):
     @classmethod
     def get_by_category(cls, category_id):
         posts = cls.objects.all().filter(category=category_id)
-        return posts
+        if posts.count() > 0:
+            return posts
+        else:
+            return None
 
     class Meta:
         verbose_name = _("Post")

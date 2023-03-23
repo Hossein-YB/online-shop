@@ -1,5 +1,4 @@
-
-from django.shortcuts import render, reverse, get_object_or_404
+from django.shortcuts import render, reverse, redirect
 from django.views import generic
 from django.views.decorators.http import require_GET
 from django.utils.translation import gettext as _
@@ -29,10 +28,7 @@ def get_user_search(request):
 
     if form_search.is_valid():
         search_word = request.GET.get('title')
-
         posts = Post.search_post_with_word(search_word)
-        for i in posts:
-            print(i)
         return render(request, template_name="blogs/blog_post_list.html", context={
             'posts': posts,
             'search_word': search_word,
@@ -48,9 +44,12 @@ def category_post_view(request, category_id):
             'posts': posts
         })
     else:
-        return reverse('blog:not_find_page')
+        return redirect("blog:not_find_page")
 
 
 def post_detail_view(request, post_id):
-    post = get_object_or_404(Post, id=post_id)
-    return render(request, template_name="blogs/blog-post-detail.html", context={'post': post})
+    try:
+        post = Post.objects.get(id=post_id)
+        return render(request, template_name="blogs/blog-post-detail.html", context={'post': post})
+    except Post.DoesNotExist:
+        return redirect("blog:not_find_page")

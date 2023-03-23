@@ -1,15 +1,56 @@
 {% extends '_base.html' %}
+{% load convert_number %}
+{% load humanize %}
 {% load i18n %}
 {% block page_tilte %}
     صفحه خانه
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <!-- start blog -->
+    <div class="container mt-4">
         <div class="row">
-            <h1>Home page</h1>
+            <p class="s-title d-inline">{% translate 'last products' %}</p>
+        </div>
+        <div class="row d-flex justify-content-around align-items-center">
+            {% for product in products %}
+                <div class="col-xl-3 col-md-4 col-sm-6 c-col-sm-6 mb-3">
+                    <div class="card custom-card">
+                        <div class="card-banner">
+                            <a href="{{ product.get_absolute_url }}">
+                                <img src="{{ product.image.url }}"
+                                     alt="Products" class="w-100">
+                            </a>
+                            <span class="position-absolute bg-danger product-offer">
+                                    تخفیف ویژه
+                                </span>
+                        </div>
+                        <div class="card-body d-flex justify-content-center align-items-center flex-column custom-card-body">
+                            <a href="{{ product.get_absolute_url }}" class="text-dark text-decoration-none">
+                                <h5 class="product-title mt-2">{{ product.title }}</h5>
+                            </a>
+                            <p class="card-text price mt-2">
+                                {#                                        <span class="p-s-first"><s>{{ product.price|intcomma:False|english_to_persian }}</s></span>#}
+                                {#                                        <span class="p-s-second">-</span>#}
+                                <span class="p-s-third">{{ product.price|intcomma:False|english_to_persian }}</span>
+
+                            </p>
+                            <div>
+                                <form class="" method="post" action="{% url 'cart:add_to_cart' product.id %}">
+                                    {% csrf_token %}
+                                    <input type="hidden" value="1" name="quantity">
+                                    <button type="submit"
+                                            class="btn btn-success">{% trans 'add to shop card' %}</button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
+    <!-- end blog -->
     <!-- start blog -->
     <div class="container mt-4">
         <div class="row">
