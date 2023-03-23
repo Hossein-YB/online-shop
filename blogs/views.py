@@ -2,12 +2,18 @@
 from django.shortcuts import render, reverse, get_object_or_404
 from django.views import generic
 from django.views.decorators.http import require_GET
-from .models import BlogCategories, Post
+from django.utils.translation import gettext as _
+from .models import Post
 from .forms import FormSearch
 
 
 def blog_404(request):
-    return render(request, 'blogs/blog_404.html')
+    text = _("Oops! The searched article was not found")
+    posts = Post.get_top_post(4)
+    return render(request, template_name='blogs/blog_404.html', context={
+        'posts': posts,
+        'text': text
+    })
 
 
 class BlogView(generic.ListView):
@@ -24,7 +30,7 @@ def get_user_search(request):
     if form_search.is_valid():
         search_word = request.GET.get('title')
 
-        posts = Post.searchst_with_word(search_word)
+        posts = Post.search_post_with_word(search_word)
         for i in posts:
             print(i)
         return render(request, template_name="blogs/blog_post_list.html", context={
@@ -35,8 +41,14 @@ def get_user_search(request):
         return reverse('blog:not_find_page')
 
 
-class PostListView(generic.ListView):
-    pass
+def category_post_view(request, category_id):
+    posts = Post.get_by_category(category_id)
+    if posts:
+        return render(request, template_name="blogs/blog_post_list.html", context={
+            'posts': posts
+        })
+    else:
+        return reverse('blog:not_find_page')
 
 
 def post_detail_view(request, post_id):

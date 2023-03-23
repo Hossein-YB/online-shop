@@ -12,7 +12,7 @@
             <div class="col-sm-12 d-flex flex-row flex-wrap">
                 {% for post in posts %}
                     <div class="card card-custom">
-                    <a href="{{ post.get_absolute_url }}" class=""><img class="w-100 h-100" src="{{ post.image.url }}" alt="{{ post.title }}"></a>
+                    <a href="{{ post.get_absolute_url }}" class=""><img class="w-100" style="height: 172px;" src="{{ post.image.url }}" alt="{{ post.title }}"></a>
                     <div class="card-body">
                         <a href="{{ post.get_absolute_url }}" class="text-decoration-none">
                             <h5 class="blog-post-title-recent">{{ post.title }}</h5>

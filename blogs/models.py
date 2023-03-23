@@ -106,6 +106,12 @@ class Post(models.Model):
     @classmethod
     def get_post_detail(cls, post_id):
         posts = cls.objects.active_posts().get(id)
+        return posts\
+
+
+    @classmethod
+    def get_by_category(cls, category_id):
+        posts = cls.objects.all().filter(category=category_id)
         return posts
 
     class Meta:
