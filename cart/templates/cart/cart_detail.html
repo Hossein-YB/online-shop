@@ -12,11 +12,8 @@
 {% block content %}
     <!-- Main Wrapper Start -->
     <div class="container-fluid bg-light">
-        <div class="row">
-            <div class="col-sm-12 text-center w-100 title-shop-cart">
-                <h3>سبد خرید</h3>
-            </div>
-        </div>
+        {% translate "cart" as page_title %}
+        {% include "page_title.html" with page_name=page_title %}
 
         <div class="row bg-white p-1 pt-5">
             <div class="col-sm-12 mt-5 mb-5">
@@ -45,17 +42,18 @@
                                                             class="flaticon flaticon-cross"></i></a>
                                                     </td>
                                                     <td class="product-thumbnail text-right">
-                                                        <img src="assets/img/prod-10-70x88.jpg"
+                                                        <img src="{{ item.product_obj.image.url }}"
+                                                             class="w-100"
                                                              alt="Product Thumnail w-100">
                                                     </td>
-                                                    <td class="product-name wide-column">
+                                                    <td class="product-name wide-column p-3">
                                                         <h3>
                                                             <a href="{% url 'product_detail' item.product_obj.id %}">{{ item.product_obj.title }}</a>
                                                         </h3>
                                                     </td>
                                                     <td class="product-price">
                                                         <span class="product-price-wrapper">
-                                                <span class="money">{{ item.product_obj.price|intcomma:False|english_to_persian }}</span>
+                                                            <span class="money">{{ item.product_obj.price|intcomma:False|english_to_persian }}</span>
                                                         </span>
                                                     </td>
                                                     <td class="product-quantity">
@@ -76,9 +74,9 @@
                                                             </div>
                                                         </form>
                                                     </td>
-                                                    <td class="product-total-price">
+                                                    <td class="product-total-price p-1">
                                                         <span class="product-price-wrapper">
-                                                <span class="money">{{ item.total_price|intcomma:False|english_to_persian }} {% trans '$' %}</span>
+                                                        <span class="money">{{ item.total_price|intcomma:False|english_to_persian }} {% trans '$' %}</span>
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -115,8 +113,8 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <a href="#" class="btn-submit text-decoration-none">
-                                        ثبت سفارش
+                                    <a href="{% url 'order_detail' %}" class="btn-submit text-decoration-none">
+                                        {% translate "order by" %}
                                     </a>
                                 </div>
                             </div>
@@ -125,15 +123,7 @@
                 </div>
             </div>
         </div>
-
-        <div class="row row-empty">
-            <div class="col-sm-12">
-                <br>
-                <br>
-                <br>
-                <br>
-            </div>
-        </div>
+        {% include "end_container.html" %}
     </div>
     <!-- Main Wrapper End -->
 {% endblock %}

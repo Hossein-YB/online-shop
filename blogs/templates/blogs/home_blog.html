@@ -1,0 +1,51 @@
+{% extends '_base_blog.html' %}
+{% load i18n %}
+
+{% block page_tilte %}
+    {% translate "Blog Home" %}
+{% endblock %}
+
+{% block content %}
+
+    <!--start menu -->
+    <div class="container mt-2">
+    <div class="row mb-2">
+        <div class="col-sm-12">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-sm-8 d-flex justify-content-center align-items-center title-slider-blog">
+                        <p class="pr-3"><span class="bold">مطالب</span> اخیر</p>
+                        <div class="module-bloge-title"></div>
+                        <a href="blog_post_list.html" class="text-decoration-none show-more">موارد بیشتر</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 d-flex flex-row flex-wrap">
+            {% for post in posts %}
+                <div class="card card-custom">
+                <a href="{{ post.get_absolute_url }}" class=""><img class="w-100" style="height: 172px;" src="{{ post.image.url }}" alt="{{ post.title }}"></a>
+                <div class="card-body">
+                    <a href="blog_post_list.html" class="text-decoration-none">
+                        <h5 class="blog-post-title-recent">{{ post.title }}</h5>
+                    </a>
+                    <p class="more-about-post">{{ post.description }}</p>
+                    <div class="d-flex justify-content-around author-blog">
+                        <a href="#" class="blog-author-name">
+                            <p>{{ post.user.username }}</p>
+                        </a>
+                    </div>
+                    <p class="blog-date">
+                       {{ post.datetime_created }}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+    <!--end menu -->
+
+{% endblock %}

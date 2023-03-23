@@ -1,4 +1,7 @@
 {% extends '_base.html' %}
+{% load i18n %}
+{% load humanize %}
+{% load convert_number %}
 
 {% block page_tilte %} فهرست محصولات {% endblock %}
 
@@ -6,16 +9,8 @@
     <!-- Main Content Wrapper Start -->
     <div class="container-fluid mt-3">
         <div class="row">
-            <div class="container">
-                <div class="row mb-5">
-                    <div class="col-sm-12">
-                        <div class="d-flex justify-content-center">
-                            <p class="product-pages">نمایش ۱-۲۰ از ۴۹</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
+            <div class="col-sm-12">
+                <div class="container">
                 <div class="row d-flex justify-content-around align-items-center">
                     {% for product in products %}
                         <div class="col-xl-3 col-md-4 col-sm-6 c-col-sm-6 mb-3">
@@ -34,52 +29,64 @@
                                         <h5 class="product-title mt-2">{{ product.title }}</h5>
                                     </a>
                                     <p class="card-text price mt-2">
-                                        <span class="p-s-first"><s>{{ product.price }}</s></span> <span class="p-s-second">-</span>
-                                        <span class="p-s-third">190000</span>
+{#                                        <span class="p-s-first"><s>{{ product.price|intcomma:False|english_to_persian }}</s></span>#}
+                                        {#                                        <span class="p-s-second">-</span>#}
+                                        <span class="p-s-third">{{ product.price|intcomma:False|english_to_persian }}</span>
 
                                     </p>
-                                    <a href="#" class="btn btn-success w-100 mt-2">افزودن به سبد خرید</a>
+                                    <div>
+                                        <form class="" method="post" action="{% url 'cart:add_to_cart' product.id %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" value="1" name="quantity">
+                                            <button type="submit"
+                                                    class="btn btn-success">{% trans 'add to shop card' %}</button>
+                                        </form>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     {% endfor %}
-                </div>
-                <!-- start pagination -->
-                <div class="row">
-                    <div class="col-sm-12">
-                        <nav class="pagination-wrap mt-5 pb-5">
-                            <ul class="pagination">
-                                {% if page_obj.has_previous %}
-                                    <li><a href="?page={{ page_obj.previous_page_number }}" class="next page-number"><i class="fa fa-angle-double-right"></i></a>
-                                    </li>
+            </div>
+            <!-- start pagination -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <nav class="pagination-wrap mt-5 pb-5">
+                        <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li><a href="?page={{ page_obj.previous_page_number }}" class="next page-number"><i
+                                        class="fa fa-angle-double-right"></i></a>
+                                </li>
+                            {% else %}
+                                <li><span class="next page-number"><i class="fa fa-angle-double-right"></i></span>
+                                </li>
+                            {% endif %}
+                            {% for page_number in page_obj.paginator.page_range %}
+                                {% if page_number == page_obj.paginator.ELLIPSIS %}
+                                    {{ page_number }}
                                 {% else %}
-                                    <li><span class="next page-number"><i class="fa fa-angle-double-right"></i></span>
+                                    <li>
+                                        <a href="?page={{ page_number }}"
+                                           class="page-number {% if page_number == page_obj.number %} current {% endif %}">
+                                            {{ page_number }}
+                                        </a>
                                     </li>
                                 {% endif %}
-                                {% for page_number in page_obj.paginator.page_range %}
-                                    {% if page_number == page_obj.paginator.ELLIPSIS %}
-                                        {{page_number}}
-                                    {% else %}
-                                        <li>
-                                            <a href="?page={{ page_number }}"
-                                               class="page-number {% if page_number == page_obj.number %} current {% endif %}">
-                                                {{ page_number }}
-                                            </a>
-                                        </li>
-                                    {% endif %}
-                                {% endfor %}
-                                {% if page_obj.has_next %}
-                                    <li><a href="?page={{ page_obj.next_page_number }}" class="prev page-number"><i class="fa fa-angle-double-left"></i></a>
-                                    </li>
-                                {% else %}
-                                    <li><span class="prev page-number"><i class="fa fa-angle-double-left"></i></span>
-                                    </li>
-                                {% endif %}
-                            </ul>
-                        </nav>
-                    </div>
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li><a href="?page={{ page_obj.next_page_number }}" class="prev page-number"><i
+                                        class="fa fa-angle-double-left"></i></a>
+                                </li>
+                            {% else %}
+                                <li><span class="prev page-number"><i class="fa fa-angle-double-left"></i></span>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
                 </div>
-                <!-- end pagination -->
+            </div>
+            <!-- end pagination -->
+        </div>
             </div>
         </div>
     </div>

@@ -6,3 +6,4 @@ app_name = 'order'
 urlpatterns = [
     path('', order_detail_view, name='order_detail')
 ]
+

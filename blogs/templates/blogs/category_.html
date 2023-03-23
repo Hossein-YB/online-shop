@@ -1,0 +1,5 @@
+{% load category %}
+{% for category in categories|categories %}
+    <li class=""><a href="{{ category.get_absolute_url }}">#{{ category.name }}</a></li>
+{% endfor %}
+

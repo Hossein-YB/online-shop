@@ -1,0 +1,59 @@
+{% extends '_base_blog.html' %}
+{% load i18n %}
+
+{% block page_tilte %}
+{{ post.title }}
+{% endblock %}
+
+{% block content %}
+    <!-- start post detail-->
+    <div class="container-fluid bg-light">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="container bg-white">
+                    <div class="row my-5">
+                        <div class="col-sm-12">
+                            <h4 class="p-5 ">
+                                {{ post.title }}
+                            </h4>
+                            <div class="module-bloge-title my-3"></div>
+                        </div>
+
+                        <div class="col-sm-12 my-3 author">
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex author-blog-post">
+{#                                    <a href="#"><img src="assets/img/blog/t2.png" alt="author image" class="blog-post-author-img"></a>#}
+                                    <a href="#" class="blog-post-author-name">
+                                        <p>{{ post.user.username }}</p>
+                                    </a>
+                                    <div>
+                                        <p class="blog-post-date  btn-font-size-14">
+                                            {{ post.datetime_created }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="time-read btn-font-size-14"><i class="fa fa-hourglass-half text-success" aria-hidden="true"></i> زمان مطالعه <span class="bold">5</span> دقیقه</p>
+                                </div>
+                                <div>
+                                    <p class="icon-blog-post text-danger"><i class="fa fa-heart-o" aria-hidden="true"></i></p>
+                                    <p class="icon-blog-post text-success"><i class=" fa fa-share" aria-hidden="true "></i>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="module-bloge-title my-3"></div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div>
+                                <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                            </div>
+                            {{ post.body|safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end post detail-->
+
+{% endblock %}
