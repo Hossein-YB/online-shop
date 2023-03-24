@@ -48,12 +48,13 @@ INSTALLED_APPS = [
     'jalali_date',
 
     # local apps
-    'accounts',
-    'pages',
-    'products',
-    'cart',
-    'orders',
-    'blogs',
+    'accounts.apps.AccountsConfig',
+    'pages.apps.PagesConfig',
+    'products.apps.ProductsConfig',
+    'cart.apps.CartConfig',
+    'orders.apps.OrdersConfig',
+    'blogs.apps.BlogsConfig',
+    'payment.apps.PaymentConfig'
 
     # installed app
     'crispy_forms',
